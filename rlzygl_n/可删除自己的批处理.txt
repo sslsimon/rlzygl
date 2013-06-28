@@ -1,0 +1,35 @@
+删除自己，批处理就达到了只运行一次的目的。要删除自己批处理的最后必须有命令del %0。例如，一个安装还原精灵.bat的内容：
+
+ 
+
+@echo off
+
+start /wait C:"\Program Files"\Onekey\一键还原精灵装机版8.15.exe
+
+del %0
+
+ 
+
+注意：须为Program Files目录加上引号，因为目录名中有空格，否则批处理无法正确识别路径。
+
+ 
+
+用VBS调用批处理可以隐藏DOS窗口，同时如果也想运行一次，在脚本的最后面加上如下代码，当脚本执行完毕后，就会把自己删除了！
+
+ 
+
+Set Delfso = CreateObject("Scripting.FileSystemObject")
+
+Delfso.DeleteFile(WScript.ScriptName)
+
+ 
+
+把以上内容综合起来的VBS脚本是：
+
+set ws=wscript.createobject("wscript.shell")
+
+ws.run "c:\windows\安装还原精灵.bat",0
+
+Set Delfso = CreateObject("Scripting.FileSystemObject")
+
+Delfso.DeleteFile(WScript.ScriptName)

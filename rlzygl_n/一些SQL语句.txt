@@ -1,0 +1,21 @@
+select 201108, a.ry_dw||'.'||case when (substr(a.ry_bm,4,6) IS null) then 0  end ||'.'||case when (substr(ry_xsbm,7,8) IS null) then 0  end, a.ry_no,a.ry_name,a.ry_glgz
+from ryxx a
+
+select RY_DW,RY_BM,RY_XSBM,RY_NO,
+substr(ry_bm,4,6), case when (substr(ry_xsbm,7,8) IS null) then 0  end AS AA, ry_name from RYXX
+
+
+select ry_dw,ry_bm,ry_xsbm,ry_no,ry_name from ryxx
+
+select 201108, a.ry_dw||'.'||substr(a.ry_bm,4,6)||'.'||case when (substr(ry_xsbm,7,8) IS null) then 0 end, a.ry_no,a.ry_name,a.ry_glgz
+from ryxx a
+
+select 201108, cast(a.ry_dw as varchar(2))||'.'||cast( substr(a.ry_bm,4,6) as varchar(4))||'.'||cast(substr(ry_xsbm,7,8) as varchar(4)), a.ry_no,a.ry_name,a.ry_glgz
+from ryxx a
+
+
+select 201108, cast(a.ry_dw as varchar(2)), cast( substr(a.ry_bm,4,5) as varchar(2)),
+substr(ry_xsbm,7,8) , a.ry_no,a.ry_name,a.ry_glgz
+from ryxx a
+
+SELECT udf_isnull(ry_bm,0) from ryxx

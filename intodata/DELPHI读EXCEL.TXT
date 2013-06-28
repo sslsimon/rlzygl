@@ -1,0 +1,97 @@
+步骤:
+1 连excel(自己知道其格式,最好是没个字段在数据一一对应)
+2 读excel数据,填入到数据库
+我这里有个函数,实现把excel表格中数据导入数据库,在一条数据导入前判断数据库中是否有该数据,如果有,就不再导入该数据(避免重复)
+,你可以参考下
+
+
+procedure TForm_qyxxcx.BitBtn2Click(Sender: TObject);
+VAR
+  I,J:INTEGER;
+  col,row:integer;
+  MsExcel,WBook,WSheet:OLEVARIANT;
+  f_temp,strtemp:string;
+begin
+  if Main_form.lwt.Message_Confirm('为预防不可预测情况发生（字段太长、类型不一致等）'+#10#13+'强烈建议在导入前备份原来数据,'+#10#13+'确认：终止导入'+#10#13+'取消：继续导入') then
+    abort;
+
+  cdsDJZY.Open;
+  cdsDJZY.First;
+  while not cdsDJZY.Eof do
+    cdsDJZY.Delete;
+
+  cdsDJZY.Close;
+  cdsDJZY.Open;
+  try
+  begin
+    MsExcel:= CreateOleObject('Excel.Application');
+    WBook:=MsExcel.Application;
+    if opendialog1.Execute then   //关联到文件
+    begin
+     if opendialog1.FileName='' then
+       abort;
+      wbook.workbooks.Open(opendialog1.FileName);
+    end;
+    WBook.Visible:= true;
+    WSheet:=WBook.worksheets[1];
+  end
+  except
+  begin
+    Application.Messagebox('您取消了操作或 Excel   没有安装!','ERROR!',   MB_ICONERROR   +   mb_Ok);
+    Abort;
+  end;
+  end;
+
+  row:=WSheet.UsedRange.Rows.Count;      //行
+  col:=WSheet.UsedRange.columns.Count;     //列
+  if (row=0) or (col = 0)  then
+  begin
+    showmessage('该excel文件没有数据！请确认');
+    abort;
+  end;
+
+  proform.Show;
+  proform.ProgressBar1.Max:=row;
+
+  with qqyb do
+  begin
+    open;
+    for i:=1 to row-1 do    //要增加的行数
+    begin   // 0 人员名称  2 企业名称
+      //判断是否存在该企业和人员，如果存在，不导入该记录
+      strtemp:='select * from qyb where qy_name = '''+WSheet.cells[i+1,1].Value+'''';
+      Main_Form.lwt.DB_AdoQueryRun(qupdate,strtemp);
+      if qupdate.RecordCount<>0 then   //  存在，加入临时表  ，退出本次循环
+      begin
+        cdsDJZY.Append ;
+        cdsDJZY.FieldByName('企业名称').AsString := WSheet.cells[i+1,1].Value;
+        cdsDJZY.Post;
+        continue;
+      end;
+      Append; //不存在，继续
+      for j:=0 to col-1 do   //列
+      begin
+        proform.ProgressBar1.Position:=proform.ProgressBar1.Position+1;
+//        if adory.Fields[j].FieldKind
+        Fields[j].Value:= WSheet.cells[i+1,j+1].Value;
+      end;
+      Post;
+    end;
+  end;
+  proform.ProgressBar1.Position:=0;
+  proform.Hide;
+
+  if cdsDJZY.RecordCount>1 then
+  begin
+    if Main_form.lwt.Message_Confirm('数据已经导入！,部分记录因为已经存在，没有导入，是否打印没有导入记录的请单？') then
+    begin
+      Main_form.lwt.DB_ShowReportByDataSet(cdsDJZY,'因为已经存在该企业导入失败的信息');
+      main_form.lwt.DB_Excel_Export(cdsdjzy,'c:\hello.xls');
+    end;
+  end
+  else
+  begin
+    Main_Form.lwt.Message_Show('数据已经导入！');
+  end;
+  wbook.workbooks.close;
+end;

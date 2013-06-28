@@ -1,0 +1,96 @@
+
+加*号为FB2.0加入的函数
+　　整理:剑雷(jianlei) 2006-10-13
+
+　　1. COUNT, AVG, MAX, MIN, SUM
+　　说明:通用统计函数,不详细介绍了
+
+　　2. EXTRACT(timestamp_part FROM value)
+　　说明:EXTRACT(YEAR/MONTHE/DAY/WEEKDAY FROM 字段名)
+　　从日期型字段中分离出年,月,日及一个星期的第几天
+
+　　3. CAST(value AS datatype)
+　　说明:转换数据类型
+
+　　4. LOWER() *
+　　说明:返回小写值
+
+　　5. UPPER()
+　　说明:返回大写值
+
+　　6. TRIM() *
+　　说明:去除字符串两边的空格
+
+　　7. SUBSTRING(string FROM pos FOR length)
+　　说明:取字符串子串,注意,第一个字符的位置是1
+
+　　8. BIT_LENGTH *
+　　说明:返回字符串位(bit)数
+
+　　9. CHAR_LENGTH/CHARACTER_LENGTH *
+　　说明:返回字符串字符数
+
+　　10. OCTET_LENGTH *
+　　说明:返回字符串字节数
+
+　　11. CASE
+　　说明:通过执行外来的一组条件取得相应的返回值
+　　举例
+　　i) 简单
+　　SELECT o.ID, o.Description,
+　　CASE o.Status
+　　WHEN 1 THEN 'confirmed'
+　　WHEN 2 THEN 'in production'
+　　WHEN 3 THEN 'ready'
+　　WHEN 4 THEN 'shipped'
+　　ELSE 'unknown status ''' || o.Status || ''''
+　　END
+　　FROM Orders o;
+　　ii) 表达式
+　　SELECT o.ID, o.Description,
+　　CASE
+　　WHEN (o.Status IS NULL) THEN 'new'
+　　WHEN (o.Status = 1) THEN 'confirmed'
+　　WHEN (o.Status = 3) THEN 'in production'
+　　WHEN (o.Status = 4) THEN 'ready'
+　　WHEN (o.Status = 5) THEN 'shipped'
+　　ELSE 'unknown status ''' || o.Status || ''''
+　　END
+　　FROM Orders o;
+
+　　12. IIF (<search_condition>, <value1>, <value2>)
+　　说明:表达式为真,返回value1否则返回value2
+　　等价于以下语句:
+　　CASE
+　　WHEN <search_condition> THEN <value1>
+　　ELSE <value2>
+　　END
+
+　　13. NULLIF(V1,V2)
+　　说明:如果V1=V2,返回NULL,否则返回V1
+　　等价于以下语句:
+　　CASE WHEN V1 = V2 THEN NULL ELSE V1 END
+　　举例
+　　UPDATE PRODUCTS
+　　SET STOCK = NULLIF(STOCK,0)
+
+　　14. COALESCE(V1, V2, …, Vn)
+　　说明:如果V1为Null,返回V2,否则返回V1,
+　　如果 n >= 3, 等于如下case语句:
+　　CASE
+　　 WHEN V1 IS NOT NULL THEN V1
+　　ELSE COALESCE (V2,...,Vn)
+　　END
+
+　　举例
+　　SELECT
+　　PROJ_NAME AS Projectname,
+　　COALESCE(e.FULL_NAME,'[< not assigned >]') AS Employeename
+　　FROM
+　　PROJECT p
+　　LEFT JOIN EMPLOYEE e
+　　ON (e.EMP_NO = p.TEAM_LEADER);
+
+　　SELECT
+　　COALESCE(Phone,MobilePhone,'Unknown') AS "Phonenumber"
+　　FROM Relations;

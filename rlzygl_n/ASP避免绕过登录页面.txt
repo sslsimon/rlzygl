@@ -1,0 +1,9 @@
+在用户登陆成功后，
+加一句 session("name")=true
+
+
+然后在只有会员能访问的页头上加一句：
+加上引用登录的页面
+<!-- #include file="alogincheck.asp" -->
+
+if session("name")="" then response.redirect "login.asp"

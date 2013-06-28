@@ -1,0 +1,13 @@
+下面这段代码可以很快的导出数据至EXCEL，速度很快，代码也很简单。
+var AdoQY:TAdoQuery;
+    sSql:String;
+begin
+   AdoQY:=TAdoQuery.Create(nil);
+   AdoQY.ConnectionString :='Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+ExtractFilePath(Application.ExeName)+'Test.mdb;Persist Security Info=False;Jet OLEDB:Database';
+   sSql := 'SELECT * INTO ["Excel 8.0;Database=' + Extractfilepath(application.ExeName )+'output.xls' + '"].[TestSheet] FROM t';
+   AdoQY.SQL.Text:=sSql;
+   AdoQY.ExecSQL;
+end;
+就是把EXCEL文件当然一个数据库，不需要创建OLE对象，不需要打开工作薄，方便、快捷！！！
+这个是复制整个表的，如果是追回的，请看下面的说明：
+If you need to add (append) data to an existing workbook (and an existing worksheet), you can use the "Insert Into ... In" SQL statement. When transferring data to an existing sheet, the column headings must already be present.

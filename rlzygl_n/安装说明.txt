@@ -1,0 +1,54 @@
+---****重要***------  WIN7系统在命令行下执行ISQL的说明：
+
+1 需要从开始菜单点出 “Interbase Server Manager”工具
+2 把“Run the InterBase server as service on Windows NT”前的勾取消
+3 点击 “start” 按钮，使“Status”变为 “Running”
+
+--------------------------------------------------------------------------------
+1. 使用IB7.5做数据库服务器，先安装这个。
+2. RYXX.GDB数据库文件拷贝到D:\RLZYGL\DATA目录下。
+3. 最新版本程序rlzy_n.exe拷贝到D:\RLZYGL目录下。
+4. Path.ini文件拷贝到D:\RLZYGL目录下。
+5. 程序有效期使用UPDATE目录下的YXQ.SQL文件设置
+
+---------------------------------------------------------------------------
+
+服务器端安装步骤：
+0  运行“数据库服务器7.5版”，勾选 “Interbase 服务器” 和 “Interbase 客户端”
+1  控制面板－区域和语言选项－区域选项－自定义－日期－短日期格式 yyyy-MM-dd 日期分隔符-
+2  双击运行My_fun文件夹下的dy_udf.bat
+3  D盘建立目录 D:\RLZYGL
+4  D:\RLZYGL下建立目录DATA
+5  解压RYXX.GDB.RAR中的RYXX.GDB文件到D:\RLZYGL\DATA目录下
+6  拷贝rlzy_n.exe到D:\RLZYGL目录下，并且创建快捷方式到桌面
+7  初始登录工号与密码为808
+8  关闭该台电脑上的防火墙。 控制面板-windows防火墙-关闭
+
+客户机安装步骤：
+0  运行“数据库服务器7.5版”, 只勾选 “Interbase 客户端”
+1  D盘建立 RLZYGL_Client目录
+2  把Path.ini rlzy_n.exe 拷到RLZYGL_Client目录
+3  双击打开RLZYGL_Client目录下的Path.ini文件，修改Saddress=后的IP地址为服务器的IP地址
+ 
+1  控制面板－区域和语言选项－区域选项－自定义－日期－短日期格式 yyyy-MM-dd 日期分隔符-
+
+
+--3  开始 运行 \\“服务器IP地址”  在弹出来窗口里输入服务器的用户名和密码，勾选“记住我的密码”
+
+-----------------------------------------------------------------------------------
+Web安装步骤  
+0 服务器使用 D:\RLZYGL\Web\wwwroot 目录下的 Sws 2.3.exe 通过建快捷方式到启动 （推荐，无广告）
+0 服务器使用 D:\RLZYGL\Web\wwwroot 目录下的 Aws2.3.exe 可以在设置中选自动启动 （有广告窗弹出）
+0 服务器使用 小旋风AspWebServer 2005  安装路径  D:\rlzygl\Web （未找到无病毒提示的版本，不建议使用）
+2 安装ib6odbc 驱动
+3 双击导入注册表文件
+4 解压ASP文件到 D:\rlzygl\Web\wwwroot 目录下
+5 本机浏览器地址栏输入127.0.0.1 可以显示用户登录页面表示安装成功
+
+----------------------------------------------------------------------------------------
+
+FTP安装步骤  使用 TYPSoft FTP 服务器版本 1.10
+1 拷贝ftpsrv目录到 D:\RLZYGL 目录下
+2 运行ftpserv.exe
+3 Set_version.exe 用于上传新的修改日期到数据做为版本更新的比较
+4 Update.exe  为更新程序的守护进程。

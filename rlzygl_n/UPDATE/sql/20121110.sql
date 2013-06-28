@@ -1,0 +1,10 @@
+ALTER TABLE OPERATOR_XX
+ADD IS_LOGIN BOOLEAN
+DEFAULT false;
+;
+commit;
+; 
+update OPERATOR_XX SET IS_LOGIN=true;
+;
+commit;
+;

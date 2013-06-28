@@ -1,0 +1,15 @@
+Use UDF !
+I test this in Delphi,that's working!
+
+function udf_isnull(A:pchar;B:pchar):PChar;cdecl;
+begin
+  if strpas(A)='' then result:=B else result:=A;
+end;
+exports
+  udf_isnull;
+
+
+DECLARE EXTERNAL FUNCTION udf_isnull
+CSTRING(256) CHARACTER SET NONE, CSTRING(256) CHARACTER SET NONE
+RETURNS CSTRING(256) CHARACTER SET NONE FREE_IT
+ENTRY_POINT 'udf_isnull' MODULE_NAME 'test.dll';

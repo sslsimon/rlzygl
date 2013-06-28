@@ -1,0 +1,3 @@
+isql D:\rlzygl\Data\RYXX.GDB -u sysdba -p masterkey -i 1.SQL
+del 1.sql
+del %0

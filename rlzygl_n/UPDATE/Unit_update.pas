@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, IdBaseComponent, IdComponent, IdUDPBase, IdUDPClient,
   IdTrivialFTP, IdTCPConnection, IdTCPClient, IdFTP, ComCtrls, RzStatus, IniFiles,
-  DB, MemDS, DBAccess, IBC, ExtCtrls;
+  DB, MemDS, DBAccess, IBC, ExtCtrls, IdExplicitTLSClientServerBase;
 
 type
   TForm1 = class(TForm)
@@ -98,7 +98,8 @@ begin
     IdFTP1.Username := 'guest';
     IdFTP1.Password := '';
     IdFTP1.Port := 21;
-    IdFTP1.Connect(true, -1);
+    IdFTP1.Connect();
+    //IdFTP1.Connect(true, -1);
     BytesToTransfer := IdFTP1.Size('rlzy_n.exe');
     //IdFTP1.Get('rlzy_n.exe', 'rlzygl_n_new.exe', true);
     IdFTP1.Get('rlzy_n.exe', 'rlzy_n1.exe', true);
@@ -173,7 +174,8 @@ try
     IdFTP1.Username := 'guest';
     IdFTP1.Password := '';
     IdFTP1.Port := 21;
-    IdFTP1.Connect(true, -1);
+     IdFTP1.Connect();
+    //IdFTP1.Connect(true, -1);
     BytesToTransfer := IdFTP1.Size('rlzy_n.exe');
     //IdFTP1.Get('rlzy_n.exe', 'rlzygl_n_new.exe', true);
     IdFTP1.Get('rlzy_n.exe', 'rlzy_n1.exe', true);

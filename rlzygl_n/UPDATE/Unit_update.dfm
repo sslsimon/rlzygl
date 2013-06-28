@@ -51,9 +51,9 @@ object Form1: TForm1
     OnClick = btn1Click
   end
   object IdFTP1: TIdFTP
-    MaxLineAction = maException
     OnWork = IdFTP1Work
     OnWorkEnd = IdFTP1WorkEnd
+    AutoLogin = True
     ProxySettings.ProxyType = fpcmNone
     ProxySettings.Port = 0
     Left = 704

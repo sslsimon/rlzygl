@@ -179,6 +179,7 @@ begin
       MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2 + MB_TOPMOST);
     Application.Terminate;
   end;
+
   yxq := StrToFloat(formatDateTime('yyyymmdd', Now)) * StrToFloat(formatDateTime('yyyymmdd', Now));
   with IBQuery1 do //程序有效期
   begin

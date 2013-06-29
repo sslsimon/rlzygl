@@ -2546,7 +2546,7 @@ begin
     end;
 
 
-    with ibcqry_ryxx do begin
+    with ibcqry_ryxx do begin  //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
         + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ')';
@@ -2844,7 +2844,7 @@ begin
       Frm_Addryzl.lbl_zw.Caption := ibcqry_ryxx.Fields[1].AsString;
     end;
 
-    with ibcqry_ryxx do begin
+    with ibcqry_ryxx do begin      //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
         + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ')';

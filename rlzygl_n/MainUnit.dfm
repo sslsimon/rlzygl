@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 329
-  Top = 184
+  Left = 211
+  Top = 190
   Align = alClient
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle

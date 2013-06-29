@@ -132,7 +132,6 @@ end;
 procedure TForm1.IdFTP1Work(Sender: TObject; AWorkMode: TWorkMode;
   const AWorkCount: Integer);
 begin
-
   if BytesToTransfer > 0 then
     RPBA.Percent := strtoint(Format('%.*f', [0, (AWorkCount / BytesToTransfer) * 100]));
   application.ProcessMessages;
@@ -153,7 +152,7 @@ begin
       MB_OK + MB_ICONINFORMATION + MB_DEFBUTTON2 + MB_TOPMOST);
     Application.Terminate;
   end;
-  with IBcQuery1 do //判断程序版本过程开始
+  with IBcQuery1 do //获取程序版本过程开始
   begin
     Close;
     SQL.Clear;
@@ -165,6 +164,7 @@ begin
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
+var new_file_datetime_edit,new_file_datetime_cre:TDateTime;
 begin
 Timer1.Enabled :=false;
 DeleteFile('rlzy_n.exe.bak');
@@ -176,9 +176,11 @@ try
     IdFTP1.Port := 21;
      IdFTP1.Connect();
     //IdFTP1.Connect(true, -1);
+    new_file_datetime_edit:= idFTP1.FileDate('rlzy_n.exe');
     BytesToTransfer := IdFTP1.Size('rlzy_n.exe');
     //IdFTP1.Get('rlzy_n.exe', 'rlzygl_n_new.exe', true);
     IdFTP1.Get('rlzy_n.exe', 'rlzy_n1.exe', true);
+
     idftp1.Disconnect;
     RenameFile('rlzy_n.exe', 'rlzy_n.exe.bak');
     RenameFile('rlzy_n1.exe', 'rlzy_n.exe');

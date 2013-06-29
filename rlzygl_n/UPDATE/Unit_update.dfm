@@ -74,8 +74,8 @@ object Form1: TForm1
   end
   object IBCQuery1: TIBCQuery
     Transaction = IBCTransaction1
-    Left = 200
-    Top = 16
+    Left = 224
+    Top = 8
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

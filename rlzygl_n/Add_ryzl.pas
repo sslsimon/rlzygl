@@ -347,7 +347,7 @@ begin
       with ibcqry_ryxx do begin //取薪资变动
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
-        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(edt_ygno.text) + ')';
+        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
       Open;
     end;
     if ibcqry_ryxx.IsEmpty then begin
@@ -582,7 +582,7 @@ begin
     with ibcqry_ryxx do begin //取薪资变动
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
-        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(edt_ygno.text) + ')';
+        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
       Open;
     end;
     if ibcqry_ryxx.IsEmpty then begin
@@ -2549,7 +2549,7 @@ begin
     with ibcqry_ryxx do begin  //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
-        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ')';
+        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
       Open;
     end;
     if ibcqry_ryxx.IsEmpty then begin
@@ -2847,7 +2847,7 @@ begin
     with ibcqry_ryxx do begin      //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
-        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ')';
+        + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
       Open;
     end;
     if ibcqry_ryxx.IsEmpty then begin

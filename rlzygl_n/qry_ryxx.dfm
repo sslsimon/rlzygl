@@ -1,11 +1,11 @@
 object Frm_qry_ryxx: TFrm_qry_ryxx
-  Left = 226
-  Top = 40
+  Left = 221
+  Top = 67
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #21592#24037#36164#26009#26597#35810
   ClientHeight = 782
-  ClientWidth = 881
+  ClientWidth = 899
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 881
+    Width = 899
     Height = 782
     ActivePage = TabSheet1
     Align = alClient
@@ -32,7 +32,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
       object ScrollBox1: TScrollBox
         Left = 0
         Top = 0
-        Width = 873
+        Width = 891
         Height = 755
         VertScrollBar.Smooth = True
         VertScrollBar.Tracking = True
@@ -49,7 +49,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 852
+          Width = 870
           Height = 41
           Align = alTop
           BorderStyle = bsSingle
@@ -92,7 +92,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel2: TPanel
           Left = 0
           Top = 41
-          Width = 852
+          Width = 870
           Height = 466
           Align = alTop
           BorderStyle = bsSingle
@@ -1612,7 +1612,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel3: TPanel
           Left = 0
           Top = 507
-          Width = 852
+          Width = 870
           Height = 343
           Align = alTop
           BorderStyle = bsSingle

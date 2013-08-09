@@ -2218,7 +2218,7 @@ object Frm_Addryzl: TFrm_Addryzl
         Font.Name = #23435#20307
         Font.Style = []
         ImeName = #20013#25991' ('#31616#20307') - '#32654#24335#38190#30424
-        ItemHeight = 0
+        ItemHeight = 16
         ParentFont = False
         TabOrder = 4
       end
@@ -2599,8 +2599,11 @@ object Frm_Addryzl: TFrm_Addryzl
         Top = 140
         Width = 127
         Height = 24
-        ItemHeight = 0
+        ItemHeight = 16
+        PopupMenu = pm1
         TabOrder = 6
+        OnKeyDown = cbb_gzjl_zwmcKeyDown
+        OnKeyPress = cbb_gzjl_zwmcKeyPress
       end
     end
     object TabSheet5: TTabSheet
@@ -3165,5 +3168,9 @@ object Frm_Addryzl: TFrm_Addryzl
   object OpenDialog1: TOpenDialog
     Left = 756
     Top = 415
+  end
+  object pm1: TPopupMenu
+    Left = 564
+    Top = 145
   end
 end

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, ExtCtrls, StdCtrls, jpeg, Mask, DB,
   IBQuery, IBDatabase, IBTable, Grids, DBGrids,
-  frxClass, IBCustomDataSet, MemDS, IBC, StrUtils, DBAccess;
+  frxClass, IBCustomDataSet, MemDS, IBC, StrUtils, DBAccess, Menus;
 
 type
   TFrm_Addryzl = class(TForm)
@@ -225,6 +225,7 @@ type
     lbl_rybm: TLabel;
     lbl_bm_no: TLabel;
     lbl_dw_no: TLabel;
+    pm1: TPopupMenu;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_addClick(Sender: TObject);
     procedure btn_editClick(Sender: TObject);
@@ -275,6 +276,9 @@ type
     procedure dtp_htqdrqChange(Sender: TObject);
     procedure cbb_xsbm1DropDown(Sender: TObject);
     procedure cbb_xsbm1Select(Sender: TObject);
+    procedure cbb_gzjl_zwmcKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbb_gzjl_zwmcKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -680,6 +684,7 @@ begin
   cbb_dw.ItemIndex := -1;
   cbb_bm.ItemIndex := -1;
   cbb_xsbm.ItemIndex := -1;
+  cbb_xsbm1.ItemIndex := -1;
   edt_ygname.Clear;
   cbb_ybxb.ItemIndex := -1;
   dtp_csrq.Date := StrToDate('1900-01-01');
@@ -3061,6 +3066,18 @@ begin
   end;
   lbl_xsbm_no.Caption := ibqry_bmxx.Fields[0].AsString;
   lbl_rybm.Caption := ibqry_bmxx.Fields[0].AsString;
+end;
+
+procedure TFrm_Addryzl.cbb_gzjl_zwmcKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+key:=0;
+end;
+
+procedure TFrm_Addryzl.cbb_gzjl_zwmcKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+key:=#0;
 end;
 
 end.

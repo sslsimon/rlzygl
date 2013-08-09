@@ -88,15 +88,15 @@ object frm_user_right: Tfrm_user_right
         end>
     end
     object RzDBCheckBox1: TRzDBCheckBox
-      Left = 350
+      Left = 444
       Top = 6
-      Width = 147
+      Width = 116
       Height = 17
       DataField = 'IS_LOGIN'
       DataSource = DataSource1
       ValueChecked = 'True'
       ValueUnchecked = 'False'
-      Caption = #26159#21542#20801#35768#30331#24405#31995#32479
+      Caption = #20801#35768#30331#24405#31995#32479
       Font.Charset = ANSI_CHARSET
       Font.Color = clRed
       Font.Height = -14

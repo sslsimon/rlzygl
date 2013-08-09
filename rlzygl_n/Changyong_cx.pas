@@ -87,6 +87,8 @@ type
     lbl_rybm: TLabel;
     lbl_xsbm_no: TLabel;
     cbb_xsbm: TComboBox;
+    ComboBox4: TComboBox;
+    Label5: TLabel;
     //IBQuery1RY_GL: TLargeintField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -111,6 +113,7 @@ type
     procedure btn_rygz_cxClick(Sender: TObject);
     procedure cbb_xsbmSelect(Sender: TObject);
     procedure cbb_xsbm1Select(Sender: TObject);
+    procedure ComboBox4Change(Sender: TObject);
     //  procedure setTitle;
   private
     { Private declarations }
@@ -429,6 +432,7 @@ end;
 procedure Tfrm_changyong_cx.Button2Click(Sender: TObject);
 //var yg_syq:string; //员工试用期
 begin
+IBCQuery2.Filtered:=False;
   if rb1.Checked then begin
    DBGridEh1.Columns.Grid.FieldColumns['GZ_ZWMC'].Visible:=true;
     with IBCQuery2 do begin
@@ -626,6 +630,22 @@ begin
     cbb_dw.Items.Add(IBCQuery1.Fields[1].AsString);
     IBCQuery1.Next;
   end;
+
+  with IBCQuery1 do begin
+    Close;
+    sql.Clear;
+    sql.Add('select distinct zwmc from zwxx ORDER BY ZW_NO');
+    Open;
+  end;
+  ComboBox4.Items.Clear;
+  ComboBox4.Items.Add('清除过滤条件');
+  while not IBCQuery1.Eof do
+  begin
+    ComboBox4.Items.Add(IBCQuery1.Fields[0].AsString);
+    IBCQuery1.Next;
+  end;
+
+
 {  with IBCQuery1 do begin
     Close;
     sql.Clear;
@@ -858,6 +878,20 @@ begin
   end;
   lbl_xsbm_no.Caption := IBCQuery1.Fields[0].AsString;
   lbl_rybm.Caption := IBCQuery1.Fields[0].AsString;
+end;
+
+procedure Tfrm_changyong_cx.ComboBox4Change(Sender: TObject);
+begin
+   if ComboBox4.ItemIndex <>0 then begin
+    IBCQuery2.Filter := 'GZ_ZWMC like '+quotedstr('%'+ComboBox4.Text+'%');
+    IBCQuery2.Filtered:=True;
+    label4.Caption := IntToStr(IBCQuery2.RecordCount) + ' 位符合条件的员工';
+    end
+    else
+    begin
+       IBCQuery2.Filtered :=False;
+       label4.Caption := IntToStr(IBCQuery2.RecordCount) + ' 位符合条件的员工';
+    end;  
 end;
 
 end.

@@ -565,6 +565,13 @@ object frm_changyong_cx: Tfrm_changyong_cx
           ParentFont = False
           Visible = False
         end
+        object Label5: TLabel
+          Left = 696
+          Top = 48
+          Width = 42
+          Height = 17
+          Caption = #32844#21153#65306
+        end
         object dtp3: TDateTimePicker
           Left = 406
           Top = 11
@@ -770,6 +777,18 @@ object frm_changyong_cx: Tfrm_changyong_cx
             OnSelect = cbb_xsbmSelect
           end
         end
+        object ComboBox4: TComboBox
+          Left = 736
+          Top = 44
+          Width = 153
+          Height = 25
+          ItemHeight = 17
+          TabOrder = 7
+          OnChange = ComboBox4Change
+          Items.Strings = (
+            ''
+            #20250#35745)
+        end
       end
     end
     object TabSheet3: TRzTabSheet
@@ -886,7 +905,7 @@ object frm_changyong_cx: Tfrm_changyong_cx
           Width = 74
           Height = 25
           Style = csDropDownList
-          ItemHeight = 17
+          ItemHeight = 0
           TabOrder = 2
           OnSelect = ComboBox2Select
         end
@@ -896,7 +915,7 @@ object frm_changyong_cx: Tfrm_changyong_cx
           Width = 74
           Height = 25
           Style = csDropDownList
-          ItemHeight = 17
+          ItemHeight = 0
           TabOrder = 3
         end
       end

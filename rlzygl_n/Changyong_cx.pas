@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, ComCtrls, StdCtrls, Grids, DBGrids, DateUtils, DB,
   IBCustomDataSet, IBQuery, MemDS, IBC, RzTabs, GridsEh, DBGridEh,
-  frxClass, frxDBSet, frxExportPDF, Menus, StrUtils, DBAccess;
+  frxClass, frxDBSet, frxExportPDF, Menus, StrUtils, DBAccess,DBGridEhImpExp;
 
 type
   Tfrm_changyong_cx = class(TForm)
@@ -66,7 +66,6 @@ type
     frxDBDataset1: TfrxDBDataset;
     PopupMenu1: TPopupMenu;
     PDF1: TMenuItem;
-    frxrprt1: TfrxReport;
     Panel4: TPanel;
     btn_rygz_cx: TButton;
     DBGridEh2: TDBGridEh;
@@ -89,6 +88,9 @@ type
     cbb_xsbm: TComboBox;
     ComboBox4: TComboBox;
     Label5: TLabel;
+    frxrprt1: TfrxReport;
+    N1: TMenuItem;
+    SaveDialog1: TSaveDialog;
     //IBQuery1RY_GL: TLargeintField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
@@ -114,6 +116,7 @@ type
     procedure cbb_xsbmSelect(Sender: TObject);
     procedure cbb_xsbm1Select(Sender: TObject);
     procedure ComboBox4Change(Sender: TObject);
+    procedure N1Click(Sender: TObject);
     //  procedure setTitle;
   private
     { Private declarations }
@@ -892,6 +895,16 @@ begin
        IBCQuery2.Filtered :=False;
        label4.Caption := IntToStr(IBCQuery2.RecordCount) + ' 位符合条件的员工';
     end;  
+end;
+
+procedure Tfrm_changyong_cx.N1Click(Sender: TObject);
+var 
+  ExpClass:TDBGridEhExportClass;
+begin
+ExpClass := TDBGridEhExportAsXLS;
+  SaveDialog1.Execute;
+  SaveDBGridEhToExportFile(ExpClass,DBGridEh1,SaveDialog1.FileName,True);
+  ShowMessage('导出成功');
 end;
 
 end.

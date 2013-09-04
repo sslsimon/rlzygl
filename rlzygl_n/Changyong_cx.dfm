@@ -1252,6 +1252,10 @@ object frm_changyong_cx: Tfrm_changyong_cx
       Caption = #25171#21360#21592#24037#36890#35759#24405'...'
       OnClick = PDF1Click
     end
+    object N1: TMenuItem
+      Caption = #23548#20986
+      OnClick = N1Click
+    end
   end
   object frxrprt1: TfrxReport
     Version = '3.15'
@@ -1485,5 +1489,11 @@ object frm_changyong_cx: Tfrm_changyong_cx
     DataSet = IBCQry_rygz
     Left = 753
     Top = 180
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.xls'
+    Filter = 'XLS|*.XLS'
+    Left = 505
+    Top = 349
   end
 end

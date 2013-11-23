@@ -1,0 +1,231 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<Style type=text/css>
+table {  font-family: 宋体; font-size: 9pt; }
+A:link {text-decoration: none; color:#0000FF; font-family:"宋体","serif"; font-size:9pt}
+A:visited {text-decoration: none; color:#0000FF; font-family:"宋体","serif"; font-size:9pt}
+A:hover {text-decoration: underline; color:#0000FF}
+body{font-family:"宋体","serif";font-size:9pt}
+td{font-family:"宋体","serif";font-size:9pt}
+</Style>
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>恭喜你！成功了！</title>
+</head>
+
+<body bgcolor="#F7F7F7" topmargin="0">
+
+<div align="center">
+  <center>
+  <table border="1" width="750" cellpadding="0" cellspacing="0" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" bordercolor="#FFFFFF" style="border: 1 dotted #C0C0C0" height="446">
+    <tr>
+      <td width="100%" height="12" valign="top" bordercolor="#CCCCCC" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC">
+        <table border="0" width="100%" cellpadding="2" height="495">
+          <tr>
+            <td width="100%" height="18">
+              <p align="center"><b><font color="#FF0000" size="3">恭喜您成功了!!</font></b></td>
+          </tr>
+          <tr>
+            <td width="100%" height="17">&nbsp; <b>尊敬的用户</b>，很高兴在这个页面与您见面，请记下这个伟大的时刻，您的ASP WEB Server于&nbsp;                         
+              <font color="#FF0000"><b><% =now %></b></font>架设成功了。从</td>
+          </tr>
+          <tr>
+            <td width="100%" height="14">此，您将告别了IIS的繁冗，告别了霸道且漏洞百出的WINNT,WIN2000...等等限制，您将在一个任意版本下的视窗系统下调试或发布您的</td>
+          </tr>
+          <tr>
+            <td width="100%" height="14">ASP程序了。支持<font color="#FF0000">win9x/winme/win2k/Server/xp/2003</font>。虽然这个软件的个头只有几百K，但功能甚至比IIS要稳定强大的多。</td>
+          </tr>
+          <tr>
+            <td width="100%" height="52"> 
+        <p align="center"><font color="#000000">下面是检测到的您的系统信息，请查证！</font></p>
+            </td>
+          </tr>
+  </center>
+  <center>
+          <tr>
+            <td width="100%" height="184"> 
+        <div align="center">
+          <center> 
+        <table border="1" width="95%" cellpadding="2" style="border: 1 dotted #CCCCCC" bordercolorlight="#F7F7F7" bordercolordark="#F7F7F7">
+          <tr>
+            <td width="24%">
+              <p align="center"><b><font color="#333333">服务器CPU型号</font></b></p>
+            </td>
+            <td width="20%">
+              <p align="center"><font color="#FF0000"><%=Request.ServerVariables("HTTP_UA_CPU")%></font></td>
+            <td width="23%">
+              <p align="center"><font color="#333333"><b>当前分辨率</b></font></p>
+            </td>
+            <td width="33%" align="left">
+              <p align="center"><font color="#FF0000"><%=Request.ServerVariables("HTTP_UA_PIXELS")%></font></p>
+            </td>
+          </tr>
+          <tr>
+            <td width="24%">
+              <p align="center"><b><font color="#333333">可显示颜色</font></b></p>
+            </td>
+            <td width="20%">
+              <p align="center"><font color="#FF0000"><%=Request.ServerVariables("HTTP_UA_COLOR")%></font></p>
+            </td>
+            <td width="23%">
+              <p align="center"><b><font color="#333333">Server地址</font></b></p>
+            </td>
+      </center>
+            <td width="33%" align="left">
+              <p align="left"><font color="#FF0000"><%=Request.ServerVariables("SERVER_NAME")%></font></p>
+            </td>
+          </tr>
+  <center>
+          <tr>
+            <td width="24%">
+              <p align="center"><b><font color="#000000">服务器接受语言</font></b></p>
+            </td>
+          </center>
+            <td width="20%">
+              <p align="left"><font color="#FF0000"><%=Request.ServerVariables("HTTP_ACCEPT_LANGUAGE")%></font></p>
+            </td>
+  <center>
+            <td width="23%">
+              <p align="center"><b><font color="#000000">访问者IP</font></b></p>
+          </td>
+          </center>
+            <td width="33%" align="left">
+              <p align="left"><font color="#FF0000"><%=Request.ServerVariables("REMOTE_ADDR")%></font></p>
+          </td>
+          </tr>
+  <center>
+          <tr>
+            <td width="24%">
+              <p align="center"><b><font color="#000000">访问者浏览器版本及系统</font></b></p>
+            </td>
+          </center>
+            <td width="76%" colspan="3">
+              <p align="left"><font color="#FF0000"><%=Request.ServerVariables("HTTP_USER_AGENT")%></font></p>
+          </td>
+  <center>
+          </center>
+          </tr>
+          <tr>
+            <td width="24%">
+              <p align="center"><b><font color="#000000">服务器可接受文件</font></b>
+            </td>
+            <td width="20%">
+          <p align="left"><b><font color="#FF0000"><%=Request.ServerVariables("HTTP_ACCEPT")%>　</font></b>
+          </td>
+            <td width="23%">
+              <p align="center"><b><font color="#000000">WEB服务器软件及版本信息</font></b></td>
+            <td width="33%" align="left">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("SERVER_SOFTWARE")%>
+          </font>
+          </td>
+          </tr>
+          <tr>
+            <td width="24%">
+            <p align="center"><b><font color="#000000">路由端口</font></b>
+            </td>
+            <td width="20%">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("REMOTE_PORT")%>
+          </font>
+          </td>
+            <td width="23%">
+              <p align="center"><b><font color="#000000">服务器http端口</font></b></td>
+            <td width="33%" align="left">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("LOCAL_PORT")%>
+          </font>
+          </td>
+          </tr>
+          <tr>
+            <td width="24%">
+            <p align="center"><b><font color="#000000">当前用户</font></b>
+            </td>
+            <td width="20%">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("LOGON_USER")%>
+          </font>
+          </td>
+            <td width="23%">
+              <p align="center"><b><font color="#000000">WEB目录名称</font></b></td>
+            <td width="33%" align="left">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("APPL_PHYSICAL_PATH")%>
+          </font>
+          </td>
+          </tr>
+          <tr>
+            <td width="24%">
+            <p align="center"><b><font color="#000000">当前WEB页位置</font></b>
+            </td>
+            <td width="20%">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("PATH_TRANSLATED")%>
+          </font>
+          </td>
+            <td width="23%">
+              <p align="center"><b><font color="#000000">请求方式</font></b></td>
+            <td width="33%" align="left">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("REQUEST_METHOD")%>
+          </font>
+          </td>
+          </tr>
+          <tr>
+            <td width="24%">
+            <p align="center"><b><font color="#000000">传输协议</font></b>
+            </td>
+            <td width="20%">
+          <p align="left"><font color="#FF0000"><%=Request.ServerVariables("SERVER_PROTOCOL")%>
+          </font>
+          </td>
+            <td width="23%">
+              <p align="center"><b>其他</b></td>
+            <td width="33%" align="left">
+          </td>
+          </tr>
+        </table>
+        </center>
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            &nbsp; <b><font color="#FF0000">注意：</font></b>成功后把您的网站COPY到wwwroot这个目录中，并用你的主页代替这个页面。<font color="#800000">主页名应为：index.asp;index.html;index.htm;</font>  
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            <font color="#800000">default.asp;default.htm;default.html</font> 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            <p align="center">作者：残剑无敌 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            <p align="center">Email:jczhuo@163.com 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            <p align="center">http://www.sheji5.info 
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" height="14"> 
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+
+</html>

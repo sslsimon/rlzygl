@@ -74,6 +74,35 @@ type
     ibtbl_zw_dyGWGZ: TFloatField;
     lbl1: TLabel;
     Edit3: TEdit;
+    TabSheet3: TTabSheet;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    DBGrid1: TDBGrid;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    DBGrid4: TDBGrid;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
+    Button13: TButton;
+    Button14: TButton;
+    Button15: TButton;
+    Button16: TButton;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Label14: TLabel;
+    Label15: TLabel;
+    ibctbl_jbdy: TIBCTable;
+    ibctbl_pxlbdy: TIBCTable;
+    ds_jbdy: TDataSource;
+    ds_pxlbdy: TDataSource;
+    ibcqry_jbdy: TIBCQuery;
+    ibcqry_pxlbdy: TIBCQuery;
+    ibctbl_jbdyJBNO: TIntegerField;
+    ibctbl_jbdyJBNAME: TStringField;
+    ibctbl_pxlbdyLBNO: TIntegerField;
+    ibctbl_pxlbdyLBNAME: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure btn_addClick(Sender: TObject);
@@ -94,6 +123,16 @@ type
     procedure ds_xl_dyDataChange(Sender: TObject; Field: TField);
     procedure ibtbl_bmxxBeforeDelete(DataSet: TDataSet);
     procedure JsDbTree1TreeChange(Sender: TObject; Node: TTreeNode);
+    procedure Button9Click(Sender: TObject);
+    procedure Button13Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button14Click(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
+    procedure Button16Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure ds_jbdyDataChange(Sender: TObject; Field: TField);
+    procedure ds_pxlbdyDataChange(Sender: TObject; Field: TField);
+    procedure Button15Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -115,14 +154,20 @@ begin
     ibtbl_bmxx.Close;
     ibtbl_zw_dy.Close;
     ibtbl_xl_dy.Close;
+    ibctbl_jbdy.Close;
+    ibctbl_pxlbdy.Close;
 
     ibtbl_bmxx.Open;
     ibtbl_zw_dy.Open;
     ibtbl_xl_dy.Open;
+    ibctbl_jbdy.Open;
+    ibctbl_pxlbdy.Open;
 
     ibtbl_bmxx.Last;
     ibtbl_zw_dy.Last;
     ibtbl_xl_dy.Last;
+    ibctbl_jbdy.Last;
+    ibctbl_pxlbdy.Last;
 
     with ibqry_BMXX do
     begin
@@ -251,6 +296,7 @@ begin
   Button4.Enabled := true;
   is_add := 0;
   Edit1.Clear;
+  Edit3.Text :='0';
 end;
 
 procedure TFrm_Addjczl.Button5Click(Sender: TObject);
@@ -413,6 +459,147 @@ procedure TFrm_Addjczl.JsDbTree1TreeChange(Sender: TObject;
   Node: TTreeNode);
 begin
   //ShowMessage('');
+end;
+
+procedure TFrm_Addjczl.Button9Click(Sender: TObject);
+begin
+  Button9.Enabled := false;
+  Button10.Enabled := false;
+  Button11.Enabled := true;
+  Button12.Enabled := true;
+  is_add := 0;
+  Edit4.Clear;
+  Edit4.SetFocus;
+end;
+
+procedure TFrm_Addjczl.Button13Click(Sender: TObject);
+begin
+  Button13.Enabled := false;
+  Button14.Enabled := false;
+  Button15.Enabled := true;
+  Button16.Enabled := true;
+  is_add := 0;
+  Edit5.Clear;
+  Edit5.SetFocus;
+end;
+
+procedure TFrm_Addjczl.Button10Click(Sender: TObject);
+begin
+Button9.Enabled := false;
+  Button10.Enabled := false;
+  Button11.Enabled := true;
+  Button12.Enabled := true;
+  is_add := 1;
+  Edit4.SetFocus;
+end;
+
+procedure TFrm_Addjczl.Button14Click(Sender: TObject);
+begin
+Button13.Enabled := false;
+  Button14.Enabled := false;
+  Button15.Enabled := true;
+  Button16.Enabled := true;
+  is_add := 1;
+  Edit5.SetFocus;
+end;
+
+procedure TFrm_Addjczl.Button12Click(Sender: TObject);
+begin
+  Button9.Enabled := true;
+  Button10.Enabled := true;
+  Button11.Enabled := false;
+  Button12.Enabled := false;
+end;
+
+procedure TFrm_Addjczl.Button16Click(Sender: TObject);
+begin
+  Button13.Enabled := true;
+  Button14.Enabled := true;
+  Button15.Enabled := false;
+  Button16.Enabled := false;
+end;
+
+procedure TFrm_Addjczl.Button11Click(Sender: TObject);
+begin
+  Button9.Enabled := true;
+  Button10.Enabled := true;
+  Button11.Enabled := false;
+  Button12.Enabled := false;
+ if is_add = 0 then //添加
+  begin
+    with ibqry_zw_dy do begin
+      Close;
+      sql.Clear;
+      sql.Add('insert into JBXX (JBNAME) values (:JBNAME)');
+      ParamByName('JBNAME').AsString := Trim(Edit4.Text);
+      ExecSQL;
+    end;
+  end;
+
+  if is_add = 1 then //修改
+  begin
+    with ibqry_zw_dy do begin
+      Close;
+      sql.Clear;
+      sql.Add('update JBXX set JBNAME=:JBNAME where JBNO=' + quotedstr(ibctbl_jbdyJBNO.AsString));
+      ParamByName('JBNAME').AsString := Trim(Edit4.Text);
+      ExecSQL;
+    end;
+  end;
+  try
+   // IBTransaction_bmxx_edit.Commit;
+    ShowMessage('保存成功！');
+
+  except
+    ShowMessage('保存失败！');
+  end;
+  refsh_date;
+end;
+
+procedure TFrm_Addjczl.ds_jbdyDataChange(Sender: TObject; Field: TField);
+begin
+Edit4.Text :=ibctbl_jbdyJBNAME.AsString;
+end;
+
+procedure TFrm_Addjczl.ds_pxlbdyDataChange(Sender: TObject; Field: TField);
+begin
+Edit5.Text :=ibctbl_pxlbdyLBNAME.AsString;
+end;
+
+procedure TFrm_Addjczl.Button15Click(Sender: TObject);
+begin
+Button13.Enabled := true;
+  Button14.Enabled := true;
+  Button15.Enabled := false;
+  Button16.Enabled := false;
+ if is_add = 0 then //添加
+  begin
+    with ibqry_zw_dy do begin
+      Close;
+      sql.Clear;
+      sql.Add('insert into PXLB (LBNAME) values (:LBNAME)');
+      ParamByName('LBNAME').AsString := Trim(Edit5.Text);
+      ExecSQL;
+    end;
+  end;
+
+  if is_add = 1 then //修改
+  begin
+    with ibqry_zw_dy do begin
+      Close;
+      sql.Clear;
+      sql.Add('update PXLB set LBNAME=:LBNAME where LBNO=' + quotedstr(ibctbl_pxlbdyLBNO.AsString));
+      ParamByName('LBNAME').AsString := Trim(Edit5.Text);
+      ExecSQL;
+    end;
+  end;
+  try
+    ShowMessage('保存成功！');
+
+  except
+    ShowMessage('保存失败！');
+  end;
+  refsh_date;
 end;
 
 end.

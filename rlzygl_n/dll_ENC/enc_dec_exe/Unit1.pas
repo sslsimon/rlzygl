@@ -34,7 +34,10 @@ const
 function encsimon( Str: PChar;keys:pchar): PChar;stdcall;
 external 'ENCC.dll';
 
-Function   EncrypKey   (Src:String;   Key:String):string;
+function EncrypKey( Str: STRING;keys:STRING): STRING;stdcall;
+external 'ENCC.dll';
+
+{Function   EncrypKey   (Src:String;   Key:String):string;
   var
   idx   :integer;
   KeyLen   :Integer;
@@ -129,18 +132,18 @@ begin
 Result:=PChar(Result+Char(StrToInt('$'+Copy(Str,i*2-1,2)) xor XorKey[j]));
 j:=(j+1) mod 8;
 end;
-end;
+end;        }
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
 //MEMO2.Text :=EncrypKey(Memo1.Text,Edit1.Text);
-Memo2.Text :=EncrypKey(Memo1.Text,'');
 
+  Memo2.Text :=EncrypKey(Memo1.Text,'aa');
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
-Memo1.Text :=UncrypKey(Memo2.Text,Edit1.Text);
+//Memo1.Text :=UncrypKey(Memo2.Text,Edit1.Text);
 end;
 
 end.

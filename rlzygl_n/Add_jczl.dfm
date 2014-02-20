@@ -23,7 +23,7 @@ object Frm_Addjczl: TFrm_Addjczl
     Top = 0
     Width = 861
     Height = 630
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
     OnChange = PageControl1Change
@@ -588,6 +588,256 @@ object Frm_Addjczl: TFrm_Addjczl
         end
       end
     end
+    object TabSheet3: TTabSheet
+      Caption = #32423#21035#12289#22521#35757#31867#21035#23450#20041
+      ImageIndex = 2
+      object GroupBox3: TGroupBox
+        Left = 0
+        Top = 0
+        Width = 853
+        Height = 265
+        Align = alTop
+        Caption = #32423#21035
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = #23435#20307
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        object DBGrid1: TDBGrid
+          Left = 2
+          Top = 21
+          Width = 849
+          Height = 201
+          Align = alClient
+          DataSource = ds_jbdy
+          ReadOnly = True
+          TabOrder = 0
+          TitleFont.Charset = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -19
+          TitleFont.Name = #23435#20307
+          TitleFont.Style = [fsBold]
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'JBNAME'
+              Title.Caption = #32423#21035
+              Visible = True
+            end>
+        end
+        object Panel4: TPanel
+          Left = 2
+          Top = 222
+          Width = 849
+          Height = 41
+          Align = alBottom
+          BevelInner = bvLowered
+          BorderStyle = bsSingle
+          TabOrder = 1
+          object Label14: TLabel
+            Left = 10
+            Top = 10
+            Width = 100
+            Height = 19
+            Caption = #20154#21592#32423#21035#65306
+          end
+          object Button9: TButton
+            Left = 451
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #28155#21152
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            OnClick = Button9Click
+          end
+          object Button10: TButton
+            Left = 539
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #20462#25913
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+            OnClick = Button10Click
+          end
+          object Button11: TButton
+            Left = 676
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #20445#23384
+            Enabled = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 2
+            OnClick = Button11Click
+          end
+          object Button12: TButton
+            Left = 764
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #21462#28040
+            Enabled = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 3
+            OnClick = Button12Click
+          end
+          object Edit4: TEdit
+            Left = 100
+            Top = 6
+            Width = 157
+            Height = 27
+            TabOrder = 4
+          end
+        end
+      end
+      object GroupBox4: TGroupBox
+        Left = 0
+        Top = 265
+        Width = 853
+        Height = 338
+        Align = alClient
+        Caption = #22521#35757#31867#21035
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = #23435#20307
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        object Panel5: TPanel
+          Left = 2
+          Top = 295
+          Width = 849
+          Height = 41
+          Align = alBottom
+          BevelInner = bvLowered
+          BorderStyle = bsSingle
+          TabOrder = 0
+          object Label15: TLabel
+            Left = 10
+            Top = 10
+            Width = 60
+            Height = 19
+            Caption = #31867#21035#65306
+          end
+          object Button13: TButton
+            Left = 451
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #28155#21152
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            OnClick = Button13Click
+          end
+          object Button14: TButton
+            Left = 539
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #20462#25913
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 1
+            OnClick = Button14Click
+          end
+          object Button15: TButton
+            Left = 676
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #20445#23384
+            Enabled = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 2
+            OnClick = Button15Click
+          end
+          object Button16: TButton
+            Left = 764
+            Top = 5
+            Width = 75
+            Height = 25
+            Caption = #21462#28040
+            Enabled = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = #23435#20307
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 3
+            OnClick = Button16Click
+          end
+          object Edit5: TEdit
+            Left = 61
+            Top = 6
+            Width = 292
+            Height = 27
+            TabOrder = 4
+          end
+        end
+        object DBGrid4: TDBGrid
+          Left = 2
+          Top = 21
+          Width = 849
+          Height = 274
+          Align = alClient
+          DataSource = ds_pxlbdy
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = ANSI_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -19
+          TitleFont.Name = #23435#20307
+          TitleFont.Style = [fsBold]
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'LBNAME'
+              Title.Caption = #22521#35757#31867#21035
+              Visible = True
+            end>
+        end
+      end
+    end
   end
   object ds_bmxx: TDataSource
     DataSet = ibtbl_bmxx
@@ -602,8 +852,8 @@ object Frm_Addjczl: TFrm_Addjczl
   end
   object ds_qry_bmxx: TDataSource
     DataSet = ibqry_BMXX
-    Left = 108
-    Top = 99
+    Left = 68
+    Top = 107
   end
   object IBCTransaction1: TIBCTransaction
     DefaultConnection = MainForm.IBCConnection1
@@ -668,7 +918,7 @@ object Frm_Addjczl: TFrm_Addjczl
     Connection = MainForm.IBCConnection1
     Transaction = IBCTransaction1
     IndexFieldNames = 'XL_NO'
-    Left = 212
+    Left = 172
     Top = 255
     object ibtbl_xl_dyXL_NO: TIntegerField
       FieldName = 'XL_NO'
@@ -683,8 +933,8 @@ object Frm_Addjczl: TFrm_Addjczl
     Transaction = IBCTransaction1
     SQL.Strings = (
       'select * from bmxx where bm_no<>'#39'0'#39' order by bm_no')
-    Left = 52
-    Top = 99
+    Left = 20
+    Top = 107
   end
   object ds_zwdy: TDataSource
     DataSet = ibtbl_zw_dy
@@ -702,5 +952,57 @@ object Frm_Addjczl: TFrm_Addjczl
     Transaction = MainForm.IBTransaction1
     Left = 300
     Top = 275
+  end
+  object ibctbl_jbdy: TIBCTable
+    TableName = 'JBXX'
+    Connection = MainForm.IBCConnection1
+    Transaction = IBCTransaction1
+    Left = 628
+    Top = 151
+    object ibctbl_jbdyJBNO: TIntegerField
+      FieldName = 'JBNO'
+    end
+    object ibctbl_jbdyJBNAME: TStringField
+      FieldName = 'JBNAME'
+      Size = 50
+    end
+  end
+  object ibctbl_pxlbdy: TIBCTable
+    TableName = 'PXLB'
+    Connection = MainForm.IBCConnection1
+    Transaction = IBCTransaction1
+    Left = 620
+    Top = 400
+    object ibctbl_pxlbdyLBNO: TIntegerField
+      FieldName = 'LBNO'
+    end
+    object ibctbl_pxlbdyLBNAME: TStringField
+      FieldName = 'LBNAME'
+      Size = 50
+    end
+  end
+  object ds_jbdy: TDataSource
+    DataSet = ibctbl_jbdy
+    OnDataChange = ds_jbdyDataChange
+    Left = 668
+    Top = 151
+  end
+  object ds_pxlbdy: TDataSource
+    DataSet = ibctbl_pxlbdy
+    OnDataChange = ds_pxlbdyDataChange
+    Left = 676
+    Top = 400
+  end
+  object ibcqry_jbdy: TIBCQuery
+    Connection = MainForm.IBCConnection1
+    Transaction = IBCTransaction1
+    Left = 596
+    Top = 151
+  end
+  object ibcqry_pxlbdy: TIBCQuery
+    Connection = MainForm.IBCConnection1
+    Transaction = IBCTransaction1
+    Left = 588
+    Top = 408
   end
 end

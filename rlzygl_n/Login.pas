@@ -58,8 +58,11 @@ procedure TFrm_Login.Button1Click(Sender: TObject);
 var user_is_login:Boolean;
 begin
   is_login := 0;
+ { user_no := '800';
+  user_passowrd := '456852'; }
+
   user_no := edit1.text;
-  user_passowrd := edit2.text;
+  user_passowrd := edit2.text;  //修改程序暂时屏蔽用户密码登录
   with IBCQuery1 do begin //查询用户是否存在或密码正确
     Close;
     SQL.Clear;

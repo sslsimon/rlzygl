@@ -83,7 +83,7 @@ var
   Server_ip, File_path: string;
  //  hnd: THandle;
 var is_edit: Integer; //is_edit:是否处于编辑模式 取值 0新增  1编辑 ,2审核
-  is_edit1, is_edit2, is_edit3, is_edit4, is_edit5, is_edit6: Integer; //人员资料管理各页面是否编辑模式  取值 0新增  1编辑
+  is_edit1, is_edit2, is_edit3, is_edit4, is_edit5, is_edit6,is_edit7: Integer; //人员资料管理各页面是否编辑模式  取值 0新增  1编辑
   gzd_shr: string;
   ryqx_name: array[0..10] of string;
  // ryqx_name: array of string ; //操作员拥有的权限名，用于对比是否有特殊权限？
@@ -213,12 +213,12 @@ begin
     end;
     if App_ver >=StrToDateTime(DateToStr(IBQuery1.Fields[0].Value)+' '+timetostr(IBQuery1.Fields[1].Value))  then begin //当前程序修改日期大于数据库记录的修改日期 不需要更新
       MainForm.Caption := Application.Title;
-      MainForm.StatusBar1.Panels[3].Text := 'ID：1.' + FloatToStr(sys_id);
+      MainForm.StatusBar1.Panels[1].Text := 'ID：1.' + FloatToStr(sys_id);
 
       Frm_Login := TFrm_Login.Create(SELF);
       //Frm_Login.Show;
       Frm_Login.ShowModal;
-      StatusBar1.Panels[0].Text := '操作员：' + user_name;
+      StatusBar1.Panels[2].Text := '操作员：' + user_name;
       begin
         if is_login = 0 then begin
           is_yx := 0;
@@ -310,7 +310,7 @@ end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
 begin
-  StatusBar1.Panels[1].Text := FormatDateTime('YYYY年mm月dd日 HH:MM:SS', Now);
+  StatusBar1.Panels[3].Text := FormatDateTime('YYYY年mm月dd日 HH:MM:SS', Now);
 end;
 
 procedure TMainForm.N15Click(Sender: TObject);

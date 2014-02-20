@@ -1941,19 +1941,21 @@ object MainForm: TMainForm
     Height = 19
     Panels = <
       item
-        Width = 415
-      end
-      item
-        Alignment = taRightJustify
-        Width = 600
-      end
-      item
         Alignment = taCenter
         Text = #32593#32476#29256#26412':1.0.0.0'
-        Width = 120
+        Width = 100
       end
       item
-        Width = 100
+        Text = 'ID'
+        Width = 200
+      end
+      item
+        Text = #25805#20316#21592
+        Width = 300
+      end
+      item
+        Text = #26085#26399#26102#38388
+        Width = 600
       end>
   end
   object MainMenu1: TMainMenu

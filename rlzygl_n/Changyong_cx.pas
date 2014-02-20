@@ -623,11 +623,11 @@ begin
   with IBCQuery1 do begin
     Close;
     sql.Clear;
-    sql.Add('select * from bmxx where bm_no like ' + quotedstr('__') + ' ORDER BY BM_NO');
+    sql.Add('select * from bmxx where bm_no like ' + quotedstr('__') + 'ORDER BY BM_NO');
     Open;
   end;
   cbb_dw.Items.Clear;
-  cbb_dw.Items.Add(gsmc);
+ // cbb_dw.Items.Add(gsmc);
   while not IBCQuery1.Eof do
   begin
     cbb_dw.Items.Add(IBCQuery1.Fields[1].AsString);

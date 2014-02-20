@@ -1,6 +1,6 @@
 object Frm_Addryzl: TFrm_Addryzl
-  Left = 245
-  Top = 162
+  Left = 463
+  Top = 272
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #21592#24037#36164#26009#32534#36753
@@ -23,11 +23,11 @@ object Frm_Addryzl: TFrm_Addryzl
     Top = 0
     Width = 862
     Height = 563
-    ActivePage = TabSheet1
+    ActivePage = TabSheet7
     Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -14
+    Font.Height = -16
     Font.Name = #23435#20307
     Font.Style = []
     ParentFont = False
@@ -1516,7 +1516,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel1: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -1755,7 +1755,7 @@ object Frm_Addryzl: TFrm_Addryzl
       ImageIndex = 4
       object Label34: TLabel
         Left = 8
-        Top = 24
+        Top = 10
         Width = 80
         Height = 16
         Caption = #21592#24037#32534#21495#65306
@@ -1768,7 +1768,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object lbl_ygno0: TLabel
         Left = 82
-        Top = 24
+        Top = 10
         Width = 8
         Height = 16
         Caption = '0'
@@ -1846,7 +1846,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object DBGrid4: TDBGrid
         Left = 0
-        Top = 320
+        Top = 318
         Width = 854
         Height = 173
         Align = alBottom
@@ -1858,6 +1858,7 @@ object Frm_Addryzl: TFrm_Addryzl
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 0
         TitleFont.Charset = ANSI_CHARSET
         TitleFont.Color = clWindowText
@@ -1865,12 +1866,6 @@ object Frm_Addryzl: TFrm_Addryzl
         TitleFont.Name = #23435#20307
         TitleFont.Style = []
         Columns = <
-          item
-            Expanded = False
-            FieldName = 'RY_NO'
-            Title.Caption = #20154#21592#32534#21495
-            Visible = True
-          end
           item
             Expanded = False
             FieldName = 'JTRY_NAME'
@@ -1973,7 +1968,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel5: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -2045,11 +2040,11 @@ object Frm_Addryzl: TFrm_Addryzl
       end
     end
     object TabSheet3: TTabSheet
-      Caption = #25945#32946#22521#35757#32463#21382
+      Caption = #25945#32946#32463#21382
       ImageIndex = 1
       object Label7: TLabel
         Left = 8
-        Top = 24
+        Top = 10
         Width = 80
         Height = 16
         Caption = #21592#24037#32534#21495#65306
@@ -2062,7 +2057,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object lbl_ygno: TLabel
         Left = 82
-        Top = 24
+        Top = 10
         Width = 8
         Height = 16
         Caption = '0'
@@ -2221,6 +2216,8 @@ object Frm_Addryzl: TFrm_Addryzl
         ItemHeight = 16
         ParentFont = False
         TabOrder = 4
+        OnKeyDown = cbb_jy_xlKeyDown
+        OnKeyPress = cbb_jy_xlKeyPress
       end
       object mmo_jy_bz: TMemo
         Left = 0
@@ -2231,7 +2228,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel2: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -2303,7 +2300,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object DBGrid1: TDBGrid
         Left = 0
-        Top = 320
+        Top = 318
         Width = 854
         Height = 173
         Align = alBottom
@@ -2315,6 +2312,7 @@ object Frm_Addryzl: TFrm_Addryzl
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 7
         TitleFont.Charset = ANSI_CHARSET
         TitleFont.Color = clWindowText
@@ -2322,12 +2320,6 @@ object Frm_Addryzl: TFrm_Addryzl
         TitleFont.Name = #23435#20307
         TitleFont.Style = []
         Columns = <
-          item
-            Expanded = False
-            FieldName = 'RY_NO'
-            Title.Caption = #20154#21592#32534#21495
-            Visible = True
-          end
           item
             Expanded = False
             FieldName = 'JY_KSRQ'
@@ -2379,14 +2371,14 @@ object Frm_Addryzl: TFrm_Addryzl
       ParentFont = False
       object Label33: TLabel
         Left = 8
-        Top = 24
+        Top = 10
         Width = 80
         Height = 16
         Caption = #21592#24037#32534#21495#65306
       end
       object lbl_ygno1: TLabel
         Left = 82
-        Top = 24
+        Top = 10
         Width = 8
         Height = 16
         Caption = '0'
@@ -2460,7 +2452,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel3: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -2532,7 +2524,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object DBGrid2: TDBGrid
         Left = 0
-        Top = 320
+        Top = 318
         Width = 854
         Height = 173
         Align = alBottom
@@ -2544,6 +2536,7 @@ object Frm_Addryzl: TFrm_Addryzl
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 5
         TitleFont.Charset = ANSI_CHARSET
         TitleFont.Color = clWindowText
@@ -2551,13 +2544,6 @@ object Frm_Addryzl: TFrm_Addryzl
         TitleFont.Name = #23435#20307
         TitleFont.Style = []
         Columns = <
-          item
-            Expanded = False
-            FieldName = 'RY_NO'
-            Title.Caption = #20154#21592#32534#21495
-            Width = 60
-            Visible = True
-          end
           item
             Expanded = False
             FieldName = 'GZ_KSRQ'
@@ -2617,14 +2603,14 @@ object Frm_Addryzl: TFrm_Addryzl
       ParentFont = False
       object Label41: TLabel
         Left = 8
-        Top = 24
+        Top = 10
         Width = 80
         Height = 16
         Caption = #21592#24037#32534#21495#65306
       end
       object lbl_ygno2: TLabel
         Left = 82
-        Top = 24
+        Top = 10
         Width = 8
         Height = 16
         Caption = '0'
@@ -2676,7 +2662,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel4: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -2748,7 +2734,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object DBGrid3: TDBGrid
         Left = 0
-        Top = 320
+        Top = 318
         Width = 854
         Height = 173
         Align = alBottom
@@ -2760,6 +2746,7 @@ object Frm_Addryzl: TFrm_Addryzl
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 4
         TitleFont.Charset = ANSI_CHARSET
         TitleFont.Color = clWindowText
@@ -2767,13 +2754,6 @@ object Frm_Addryzl: TFrm_Addryzl
         TitleFont.Name = #23435#20307
         TitleFont.Style = []
         Columns = <
-          item
-            Expanded = False
-            FieldName = 'RY_NO'
-            Title.Caption = #20154#21592#32534#21495
-            Width = 59
-            Visible = True
-          end
           item
             Expanded = False
             FieldName = 'XZBD_BDRQ'
@@ -2800,7 +2780,6 @@ object Frm_Addryzl: TFrm_Addryzl
     object TabSheet6: TTabSheet
       Caption = #27979#35780#32467#26524
       ImageIndex = 5
-      TabVisible = False
       object lbl_ygno3: TLabel
         Left = 83
         Top = 8
@@ -2843,7 +2822,7 @@ object Frm_Addryzl: TFrm_Addryzl
       end
       object Panel6: TPanel
         Left = 0
-        Top = 493
+        Top = 491
         Width = 854
         Height = 41
         Align = alBottom
@@ -2914,6 +2893,337 @@ object Frm_Addryzl: TFrm_Addryzl
         end
       end
     end
+    object TabSheet7: TTabSheet
+      Caption = #22521#35757#32463#21382
+      ImageIndex = 6
+      object Label1: TLabel
+        Left = 8
+        Top = 10
+        Width = 80
+        Height = 16
+        Caption = #21592#24037#32534#21495#65306
+      end
+      object lbl_ygno_pxjl: TLabel
+        Left = 82
+        Top = 10
+        Width = 8
+        Height = 16
+        Caption = '0'
+      end
+      object Label3: TLabel
+        Left = 8
+        Top = 43
+        Width = 48
+        Height = 16
+        Caption = #32423#21035#65306
+      end
+      object Label52: TLabel
+        Left = 224
+        Top = 44
+        Width = 80
+        Height = 16
+        Caption = #22521#35757#26085#26399#65306
+      end
+      object Label54: TLabel
+        Left = 8
+        Top = 80
+        Width = 80
+        Height = 16
+        Caption = #21463#35757#26102#38271#65306
+      end
+      object Label55: TLabel
+        Left = 215
+        Top = 80
+        Width = 80
+        Height = 16
+        Caption = #22521#35757#26102#38271#65306
+      end
+      object Label56: TLabel
+        Left = 8
+        Top = 150
+        Width = 80
+        Height = 16
+        Caption = #22521#35757#35838#31243#65306
+      end
+      object Label57: TLabel
+        Left = 8
+        Top = 113
+        Width = 80
+        Height = 16
+        Caption = #22521#35757#31867#21035#65306
+      end
+      object Label58: TLabel
+        Left = 8
+        Top = 188
+        Width = 112
+        Height = 16
+        Caption = #22806#35757#26426#26500#21517#31216#65306
+      end
+      object Label59: TLabel
+        Left = 8
+        Top = 224
+        Width = 112
+        Height = 16
+        Caption = #22521#35757#33719#24471#35777#20070#65306
+      end
+      object Label60: TLabel
+        Left = 8
+        Top = 256
+        Width = 48
+        Height = 16
+        Caption = #22791#27880#65306
+      end
+      object Label2: TLabel
+        Left = 160
+        Top = 80
+        Width = 32
+        Height = 16
+        Caption = '('#26102')'
+      end
+      object Label61: TLabel
+        Left = 367
+        Top = 80
+        Width = 32
+        Height = 16
+        Caption = '('#26102')'
+      end
+      object Panel7: TPanel
+        Left = 0
+        Top = 491
+        Width = 854
+        Height = 41
+        Align = alBottom
+        BorderStyle = bsSingle
+        ParentBackground = False
+        TabOrder = 0
+        object btn_pxjl_save: TButton
+          Left = 610
+          Top = 6
+          Width = 75
+          Height = 25
+          Caption = #20445#23384
+          Enabled = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -14
+          Font.Name = #23435#20307
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnClick = btn_pxjl_saveClick
+        end
+        object btn_pxjl_cancel: TButton
+          Left = 714
+          Top = 6
+          Width = 75
+          Height = 25
+          Caption = #21462#28040
+          Enabled = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -14
+          Font.Name = #23435#20307
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+          OnClick = btn_pxjl_cancelClick
+        end
+        object btn_pxjl_add: TButton
+          Left = 32
+          Top = 6
+          Width = 75
+          Height = 25
+          Caption = #28155#21152
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -14
+          Font.Name = #23435#20307
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          OnClick = btn_pxjl_addClick
+        end
+        object btn_pxjl_edit: TButton
+          Left = 136
+          Top = 6
+          Width = 75
+          Height = 25
+          Caption = #20462#25913
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -14
+          Font.Name = #23435#20307
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 3
+          OnClick = btn_pxjl_editClick
+        end
+      end
+      object DBGrid5: TDBGrid
+        Left = 0
+        Top = 366
+        Width = 854
+        Height = 125
+        Align = alBottom
+        DataSource = ds_pxjl
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = ANSI_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -16
+        TitleFont.Name = #23435#20307
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'JBNAME'
+            Title.Caption = #32423#21035
+            Width = 96
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PXRQ'
+            Title.Caption = #22521#35757#26085#26399
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'SXSC'
+            Title.Caption = #21463#35757#26102#38271
+            Width = 68
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PXSC'
+            Title.Caption = #22521#35757#26102#38271
+            Width = 70
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PXKC'
+            Title.Caption = #22521#35757#35838#31243
+            Width = 167
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PXLBNAME'
+            Title.Caption = #22521#35757#31867#21035
+            Width = 114
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NXBJ'
+            Title.Caption = #20869'\'#22806#35757
+            Width = 62
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'WXJG'
+            Title.Caption = #22806#35757#26426#26500
+            Width = 333
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PXHDZS'
+            Title.Caption = #22521#35757#33719#24471#35777#20070
+            Width = 187
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BZ'
+            Title.Caption = #22791#27880
+            Visible = True
+          end>
+      end
+      object chk_nxbj: TCheckBox
+        Left = 216
+        Top = 112
+        Width = 57
+        Height = 17
+        Caption = #20869#35757
+        TabOrder = 2
+      end
+      object mmo_pxjl_bz: TMemo
+        Left = 0
+        Top = 277
+        Width = 854
+        Height = 89
+        Align = alBottom
+        TabOrder = 3
+      end
+      object cbb_jb: TComboBox
+        Left = 56
+        Top = 40
+        Width = 145
+        Height = 24
+        ItemHeight = 16
+        TabOrder = 4
+        OnKeyDown = cbb_jbKeyDown
+        OnKeyPress = cbb_jbKeyPress
+      end
+      object dtp_pxrq: TDateTimePicker
+        Left = 300
+        Top = 40
+        Width = 145
+        Height = 24
+        Date = 41630.602916319450000000
+        Time = 41630.602916319450000000
+        TabOrder = 5
+      end
+      object edt_pxjl_sssc: TEdit
+        Left = 80
+        Top = 76
+        Width = 80
+        Height = 24
+        TabOrder = 6
+      end
+      object edt_pxjl_pxsc: TEdit
+        Left = 287
+        Top = 76
+        Width = 80
+        Height = 24
+        TabOrder = 7
+      end
+      object cbb_pxlb: TComboBox
+        Left = 79
+        Top = 110
+        Width = 121
+        Height = 24
+        ItemHeight = 16
+        TabOrder = 8
+        OnKeyDown = cbb_pxlbKeyDown
+        OnKeyPress = cbb_pxlbKeyPress
+      end
+      object edt_pxjl_pxkc: TEdit
+        Left = 88
+        Top = 146
+        Width = 425
+        Height = 24
+        TabOrder = 9
+      end
+      object edt_pxjl_wxjgmc: TEdit
+        Left = 120
+        Top = 184
+        Width = 393
+        Height = 24
+        TabOrder = 10
+      end
+      object edt_pxjl_pxhdzs: TEdit
+        Left = 114
+        Top = 221
+        Width = 399
+        Height = 24
+        TabOrder = 11
+      end
+    end
   end
   object ds_jyjl: TDataSource
     DataSet = ibtbl_JYJL
@@ -2924,8 +3234,8 @@ object Frm_Addryzl: TFrm_Addryzl
   object ds_gzjl: TDataSource
     DataSet = ibtbl_gzjl
     OnDataChange = ds_gzjlDataChange
-    Left = 172
-    Top = 281
+    Left = 204
+    Top = 289
   end
   object ds_GZBD: TDataSource
     DataSet = ibtbl_XZBD
@@ -2937,7 +3247,7 @@ object Frm_Addryzl: TFrm_Addryzl
     DataSet = ibtbl_jtgx
     OnDataChange = ds_jtgxDataChange
     Left = 180
-    Top = 233
+    Top = 193
   end
   object frxReport1: TfrxReport
     Version = '3.15'
@@ -3008,15 +3318,15 @@ object Frm_Addryzl: TFrm_Addryzl
   end
   object IBTransaction_jtgx: TIBCTransaction
     DefaultConnection = MainForm.IBCConnection1
-    Left = 148
-    Top = 233
+    Left = 140
+    Top = 201
   end
   object ibtbl_jtgx: TIBCTable
     TableName = 'RYXX_JTGX'
     Connection = MainForm.IBCConnection1
     Transaction = IBTransaction_jtgx
-    Left = 116
-    Top = 233
+    Left = 100
+    Top = 201
     object ibtbl_jtgxJTGX_ID: TIntegerField
       FieldName = 'JTGX_ID'
       Required = True
@@ -3088,8 +3398,8 @@ object Frm_Addryzl: TFrm_Addryzl
     TableName = 'RYXX_GZJL'
     Connection = MainForm.IBCConnection1
     Transaction = IBTransaction_GZJL
-    Left = 100
-    Top = 281
+    Left = 68
+    Top = 297
     object ibtbl_gzjlGZJL_ID: TIntegerField
       FieldName = 'GZJL_ID'
       Required = True
@@ -3131,7 +3441,7 @@ object Frm_Addryzl: TFrm_Addryzl
     TableName = 'RYXX_XZBDJL'
     Connection = MainForm.IBCConnection1
     Transaction = IBTransaction_XZBD
-    Left = 340
+    Left = 292
     Top = 409
     object ibtbl_XZBDXZBDJL_ID: TIntegerField
       FieldName = 'XZBDJL_ID'
@@ -3172,5 +3482,70 @@ object Frm_Addryzl: TFrm_Addryzl
   object pm1: TPopupMenu
     Left = 564
     Top = 145
+  end
+  object ds_pxjl: TDataSource
+    DataSet = ibctbl_pxjl
+    OnDataChange = ds_pxjlDataChange
+    Left = 692
+    Top = 219
+  end
+  object ibctbl_pxjl: TIBCTable
+    TableName = 'RYXX_PXJL'
+    Connection = MainForm.IBCConnection1
+    Left = 644
+    Top = 219
+    object ibctbl_pxjlPXJL_ID: TIntegerField
+      FieldName = 'PXJL_ID'
+    end
+    object ibctbl_pxjlRY_NO: TIntegerField
+      FieldName = 'RY_NO'
+      Required = True
+    end
+    object ibctbl_pxjlJBNAME: TStringField
+      FieldName = 'JBNAME'
+      Size = 50
+    end
+    object ibctbl_pxjlPXRQ: TDateField
+      FieldName = 'PXRQ'
+    end
+    object ibctbl_pxjlSXSC: TFloatField
+      FieldName = 'SXSC'
+    end
+    object ibctbl_pxjlPXSC: TFloatField
+      FieldName = 'PXSC'
+    end
+    object ibctbl_pxjlPXKC: TStringField
+      FieldName = 'PXKC'
+      Size = 200
+    end
+    object ibctbl_pxjlPXLBNAME: TStringField
+      FieldName = 'PXLBNAME'
+      Size = 50
+    end
+    object ibctbl_pxjlNXBJ: TStringField
+      FieldName = 'NXBJ'
+    end
+    object ibctbl_pxjlWXJG: TStringField
+      FieldName = 'WXJG'
+      Size = 200
+    end
+    object ibctbl_pxjlPXHDZS: TStringField
+      FieldName = 'PXHDZS'
+      Size = 200
+    end
+    object ibctbl_pxjlBZ: TStringField
+      FieldName = 'BZ'
+      Size = 500
+    end
+  end
+  object ibcqry_pxjl_jbxx: TIBCQuery
+    Connection = MainForm.IBCConnection1
+    Left = 668
+    Top = 75
+  end
+  object ibcqry_pxjl_pxlb: TIBCQuery
+    Connection = MainForm.IBCConnection1
+    Left = 660
+    Top = 139
   end
 end

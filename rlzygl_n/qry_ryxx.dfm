@@ -4,7 +4,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #21592#24037#36164#26009#26597#35810
-  ClientHeight = 782
+  ClientHeight = 907
   ClientWidth = 899
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -23,7 +23,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
     Left = 0
     Top = 0
     Width = 899
-    Height = 782
+    Height = 907
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
@@ -33,7 +33,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         Left = 0
         Top = 0
         Width = 891
-        Height = 755
+        Height = 880
         VertScrollBar.Smooth = True
         VertScrollBar.Tracking = True
         Align = alClient
@@ -49,7 +49,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 870
+          Width = 887
           Height = 41
           Align = alTop
           BorderStyle = bsSingle
@@ -92,7 +92,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel2: TPanel
           Left = 0
           Top = 41
-          Width = 870
+          Width = 887
           Height = 466
           Align = alTop
           BorderStyle = bsSingle
@@ -1612,7 +1612,7 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
         object Panel3: TPanel
           Left = 0
           Top = 507
-          Width = 870
+          Width = 887
           Height = 343
           Align = alTop
           BorderStyle = bsSingle
@@ -1637,12 +1637,6 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
             TitleFont.Name = #23435#20307
             TitleFont.Style = []
             Columns = <
-              item
-                Expanded = False
-                FieldName = 'RY_NO'
-                Title.Caption = #20154#21592#32534#21495
-                Visible = True
-              end
               item
                 Expanded = False
                 FieldName = 'JTRY_NAME'
@@ -1698,12 +1692,6 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
             TitleFont.Name = #23435#20307
             TitleFont.Style = []
             Columns = <
-              item
-                Expanded = False
-                FieldName = 'RY_NO'
-                Title.Caption = #20154#21592#32534#21495
-                Visible = True
-              end
               item
                 Expanded = False
                 FieldName = 'JY_KSRQ'
@@ -1763,13 +1751,6 @@ object Frm_qry_ryxx: TFrm_qry_ryxx
             TitleFont.Name = #23435#20307
             TitleFont.Style = []
             Columns = <
-              item
-                Expanded = False
-                FieldName = 'RY_NO'
-                Title.Caption = #20154#21592#32534#21495
-                Width = 60
-                Visible = True
-              end
               item
                 Expanded = False
                 FieldName = 'GZ_KSRQ'

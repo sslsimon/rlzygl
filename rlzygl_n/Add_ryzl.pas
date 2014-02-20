@@ -226,6 +226,52 @@ type
     lbl_bm_no: TLabel;
     lbl_dw_no: TLabel;
     pm1: TPopupMenu;
+    TabSheet7: TTabSheet;
+    Label1: TLabel;
+    lbl_ygno_pxjl: TLabel;
+    Panel7: TPanel;
+    btn_pxjl_save: TButton;
+    btn_pxjl_cancel: TButton;
+    btn_pxjl_add: TButton;
+    btn_pxjl_edit: TButton;
+    DBGrid5: TDBGrid;
+    Label3: TLabel;
+    Label52: TLabel;
+    Label54: TLabel;
+    Label55: TLabel;
+    Label56: TLabel;
+    Label57: TLabel;
+    chk_nxbj: TCheckBox;
+    Label58: TLabel;
+    Label59: TLabel;
+    Label60: TLabel;
+    mmo_pxjl_bz: TMemo;
+    cbb_jb: TComboBox;
+    dtp_pxrq: TDateTimePicker;
+    edt_pxjl_sssc: TEdit;
+    edt_pxjl_pxsc: TEdit;
+    Label2: TLabel;
+    Label61: TLabel;
+    cbb_pxlb: TComboBox;
+    edt_pxjl_pxkc: TEdit;
+    edt_pxjl_wxjgmc: TEdit;
+    edt_pxjl_pxhdzs: TEdit;
+    ds_pxjl: TDataSource;
+    ibctbl_pxjl: TIBCTable;
+    ibctbl_pxjlPXJL_ID: TIntegerField;
+    ibctbl_pxjlRY_NO: TIntegerField;
+    ibctbl_pxjlJBNAME: TStringField;
+    ibctbl_pxjlPXRQ: TDateField;
+    ibctbl_pxjlSXSC: TFloatField;
+    ibctbl_pxjlPXSC: TFloatField;
+    ibctbl_pxjlPXKC: TStringField;
+    ibctbl_pxjlPXLBNAME: TStringField;
+    ibctbl_pxjlNXBJ: TStringField;
+    ibctbl_pxjlWXJG: TStringField;
+    ibctbl_pxjlPXHDZS: TStringField;
+    ibctbl_pxjlBZ: TStringField;
+    ibcqry_pxjl_jbxx: TIBCQuery;
+    ibcqry_pxjl_pxlb: TIBCQuery;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btn_addClick(Sender: TObject);
     procedure btn_editClick(Sender: TObject);
@@ -279,6 +325,20 @@ type
     procedure cbb_gzjl_zwmcKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cbb_gzjl_zwmcKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_pxjl_addClick(Sender: TObject);
+    procedure btn_pxjl_cancelClick(Sender: TObject);
+    procedure btn_pxjl_editClick(Sender: TObject);
+    procedure ds_pxjlDataChange(Sender: TObject; Field: TField);
+    procedure btn_pxjl_saveClick(Sender: TObject);
+    procedure cbb_jbKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbb_jbKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_pxlbKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbb_pxlbKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_jy_xlKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure cbb_jy_xlKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -315,40 +375,47 @@ procedure tfrm_addryzl.refsh_data; //刷新数据
 begin
   try
 
-  ibtbl_JYJL.Close; //教育经历表
-  ibtbl_JYJL.Open;
-  ibtbl_JYJL.Filter := 'ry_no=' + lbl_ygno.Caption;
-  ibtbl_JYJL.Filtered := true;
-  ibtbl_JYJL.Last;
+    ibtbl_JYJL.Close; //教育经历表
+    ibtbl_JYJL.Open;
+    ibtbl_JYJL.Filter := 'ry_no=' + lbl_ygno.Caption;
+    ibtbl_JYJL.Filtered := true;
+    ibtbl_JYJL.Last;
 
-  ibtbl_gzjl.Close; //工作经历表
-  ibtbl_gzjl.Open;
-  ibtbl_gzjl.Filter := 'ry_no=' + lbl_ygno.Caption;
-  ibtbl_gzjl.Filtered := true;
-  ibtbl_gzjl.Last;
+    ibtbl_gzjl.Close; //工作经历表
+    ibtbl_gzjl.Open;
+    ibtbl_gzjl.Filter := 'ry_no=' + lbl_ygno.Caption;
+    ibtbl_gzjl.Filtered := true;
+    ibtbl_gzjl.Last;
 
-  ibtbl_xzbd.Close; // 薪资变动表
-  ibtbl_xzbd.Open;
-  ibtbl_xzbd.Filter := 'ry_no=' + lbl_ygno.Caption;
-  ibtbl_xzbd.Filtered := true;
-  ibtbl_XZBD.Last;
+    ibtbl_xzbd.Close; // 薪资变动表
+    ibtbl_xzbd.Open;
+    ibtbl_xzbd.Filter := 'ry_no=' + lbl_ygno.Caption;
+    ibtbl_xzbd.Filtered := true;
+    ibtbl_XZBD.Last;
 
-  ibtbl_jtgx.Close;
-  ibtbl_jtgx.Open; //家庭关系表
-  ibtbl_jtgx.Filter := 'ry_no=' + lbl_ygno.Caption;
-  ibtbl_jtgx.filtered := True;
-  ibtbl_jtgx.Last;
-  with ibcqry_ryxx do begin
-    Close;
-   if edt_ygno.Text <>'' then
-    SQL.Text := 'select RY_GL FROM RYXX WHERE RY_NO=' + quotedstr(edt_ygno.Text)
-    else
-    Exit;
-    Open;
-    lbl_yggl.Caption := '员工工龄：' + ibcqry_ryxx.fieldbyname('RY_GL').AsString + '年';
-  end;
+    ibtbl_jtgx.Close;
+    ibtbl_jtgx.Open; //家庭关系表
+    ibtbl_jtgx.Filter := 'ry_no=' + lbl_ygno.Caption;
+    ibtbl_jtgx.filtered := True;
+    ibtbl_jtgx.Last;
 
-      with ibcqry_ryxx do begin //取薪资变动
+    ibctbl_pxjl.Close;
+    ibctbl_pxjl.Open;// 培训记录表
+    ibctbl_pxjl.Filter :='ry_no=' + lbl_ygno.Caption;
+    ibctbl_pxjl.Filtered :=true;
+    ibctbl_pxjl.Last;
+
+    with ibcqry_ryxx do begin
+      Close;
+      if edt_ygno.Text <> '' then
+        SQL.Text := 'select RY_GL FROM RYXX WHERE RY_NO=' + quotedstr(edt_ygno.Text)
+      else
+        Exit;
+      Open;
+      lbl_yggl.Caption := '员工工龄：' + ibcqry_ryxx.fieldbyname('RY_GL').AsString + '年';
+    end;
+
+    with ibcqry_ryxx do begin //取薪资变动
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
         + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
@@ -363,7 +430,7 @@ begin
     end;
 
   except
-    end;
+  end;
 end;
 
 procedure tfrm_addryzl.get_ryxx_last;
@@ -385,6 +452,7 @@ begin
     lbl_ygno2.Caption := edt_ygno.Text;
     lbl_ygno0.Caption := edt_ygno.Text;
     lbl_ygno3.Caption := edt_ygno.Text;
+    lbl_ygno_pxjl.Caption :=edt_ygno.Text;
     edt_ygname.Text := ibcqry_ryxx.fieldbyname('RY_NAME').AsString;
     if ibcqry_ryxx.fieldbyname('RY_SEX').AsString = '男' then
       cbb_ybxb.itemindex := 0;
@@ -532,7 +600,7 @@ begin
         lbl_rybm.Caption := RY_BM;
       end;
 
-           sql.Clear; //取人员学历
+      sql.Clear; //取人员学历
       sql.Add('select a.xlmc from xlxx a,ryxx b'
         + ' where a.xlmc=b.ry_zgxl and b.ry_no=' + quotedstr(edt_ygno.text));
       Open;
@@ -598,7 +666,7 @@ begin
     end;
 
     with ibcqry_ryxx do begin
-     close;
+      close;
       sql.Text := 'select ry_no, ry_cpjg from ryxx_cpjg'
         + ' where ry_no=' + quotedstr(edt_ygno.text);
       Open;
@@ -606,25 +674,25 @@ begin
     if ibcqry_ryxx.IsEmpty then begin
       Memo1.Text := '无';
       //ShowMessage(lbl_is_edit.Caption);
-      btn_edit_cpjg.Enabled :=False;
-      if lbl_is_edit.Caption ='0'then
+      btn_edit_cpjg.Enabled := False;
+      if lbl_is_edit.Caption = '0' then
       begin
-      btn_add_cpjg.Enabled :=true;
+        btn_add_cpjg.Enabled := true;
       end
       else
       begin
-      btn_add_cpjg.Enabled :=false;
+        btn_add_cpjg.Enabled := false;
       end;
     end
     else
     begin
       Memo1.Text := ibcqry_ryxx.Fields[1].AsString;
-      if lbl_is_edit.Caption ='0' then
-      btn_add_cpjg.Enabled :=false
+      if lbl_is_edit.Caption = '0' then
+        btn_add_cpjg.Enabled := false
       else
-       btn_edit_cpjg.Enabled :=true;
+        btn_edit_cpjg.Enabled := true;
        //end;
-end;
+    end;
 
 
     refsh_data;
@@ -651,13 +719,13 @@ procedure TFrm_Addryzl.btn_addClick(Sender: TObject);
 var i: Integer;
 begin
   is_edit1 := 0;
-  lbl_is_edit.Caption  :='0';
+  lbl_is_edit.Caption := '0';
   btn_save.Enabled := true;
   btn_cancel.Enabled := true;
   btn_add.Enabled := false;
   btn_edit.Enabled := False;
   btn_cx.Enabled := False;
-  Button1.Enabled :=false;
+  Button1.Enabled := false;
   Button2.Enabled := false;
   btn_ins_photo.Enabled := true;
   btn_del_photo.Enabled := true;
@@ -666,6 +734,7 @@ begin
   TabSheet4.TabVisible := False;
   TabSheet5.TabVisible := False;
   TabSheet6.TabVisible := false;
+  TabSheet7.TabVisible := false;
 
   for i := 0 to self.componentcount - 1 do begin
     if self.components[i] is Tedit then
@@ -716,13 +785,14 @@ begin
   lbl_ygno2.Caption := edt_ygno.Text;
   lbl_ygno0.Caption := edt_ygno.Text;
   lbl_ygno3.Caption := edt_ygno.Text;
+  lbl_ygno_pxjl.Caption :=edt_ygno.Text;
 end;
 
 procedure TFrm_Addryzl.btn_editClick(Sender: TObject);
 var i: Integer;
 begin
   is_edit1 := 1;
-  lbl_is_edit.Caption :='1';
+  lbl_is_edit.Caption := '1';
   if edt_ygno.Text = '0' then
   begin
     //ShowMessage('请点击员工编号，查询需要修改的人员');
@@ -830,6 +900,7 @@ begin
                   lbl_ygno2.Caption := edt_ygno.Text;
                   lbl_ygno0.Caption := edt_ygno.Text;
                   lbl_ygno3.Caption := edt_ygno.Text;
+                  lbl_ygno_pxjl.Caption :=edt_ygno.Text
                 end;
                 with ibqry_insert do begin
                   Close;
@@ -902,7 +973,8 @@ begin
                     TabSheet3.TabVisible := true;
                     TabSheet4.TabVisible := true;
                     TabSheet5.TabVisible := true;
-                    TabSheet6.TabVisible := true;
+                    //TabSheet6.TabVisible := true;测评结果页面不显示
+                    TabSheet7.TabVisible := true;
                     refsh_data;
                     for i := 0 to self.componentcount - 1 do begin
                       if self.components[i] is Tedit then
@@ -914,7 +986,7 @@ begin
                       if self.components[i] is TMemo then
                         TMemo(self.components[i]).Enabled := false;
                       if Self.Components[i] is TDBGrid then
-                        TDBGrid(self.Components[i]).Enabled := false;
+                        TDBGrid(self.Components[i]).Enabled := true;
                     end;
                   except
                     ShowMessage('添加失败！');
@@ -929,6 +1001,7 @@ begin
                     TabSheet4.TabVisible := false;
                     TabSheet5.TabVisible := false;
                     TabSheet6.TabVisible := false;
+                    TabSheet7.TabVisible := false;
                   end;
                 end;
               end;
@@ -1035,7 +1108,7 @@ begin
                         if self.components[i] is TMemo then
                           TMemo(self.components[i]).Enabled := false;
                         if Self.Components[i] is TDBGrid then
-                          TDBGrid(self.Components[i]).Enabled := false;
+                          TDBGrid(self.Components[i]).Enabled := true;
                       end;
                     except
                       ShowMessage('修改失败');
@@ -1069,7 +1142,8 @@ begin
   TabSheet3.TabVisible := true;
   TabSheet4.TabVisible := true;
   TabSheet5.TabVisible := true;
- TabSheet6.TabVisible := true;
+// TabSheet6.TabVisible := true;  测评结果页面不显示
+  TabSheet7.TabVisible := true;
   btn_cx.Enabled := TRUE;
   Button1.Enabled := true;
   Button2.Enabled := true;
@@ -1085,7 +1159,7 @@ begin
     if self.components[i] is tdatetimepicker then
       tdatetimepicker(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
   if is_edit = 0 then
   begin
@@ -1108,11 +1182,12 @@ procedure TFrm_Addryzl.FormShow(Sender: TObject);
 var
   i: integer;
 begin
- lbl_dw_no.Caption := '0';
+  lbl_dw_no.Caption := '0';
   lbl_bm_no.Caption := '0';
   lbl_xsbm_no.Caption := '0';
   btn_ins_photo.Enabled := false;
   btn_del_photo.Enabled := False;
+  TabSheet6.TabVisible := false;
   if is_edit = 0 then begin //添加
     btn_add.Enabled := true;
     btn_edit.Enabled := False;
@@ -1126,6 +1201,9 @@ begin
     btn_xzbd_edit.Enabled := False;
     btn_add_cpjg.Enabled := True;
     btn_edit_cpjg.Enabled := False;
+    btn_pxjl_add.Enabled := True;
+    btn_pxjl_edit.Enabled := false;
+
   end
   else
     if is_edit = 1 then begin
@@ -1140,10 +1218,12 @@ begin
         btn_jyjl_edit.Enabled := True;
         btn_gzjl_add.Enabled := false;
         btn_gzjl_edit.Enabled := True;
-        btn_xzbd_add.Enabled := true;
+        btn_xzbd_add.Enabled := false;
         btn_xzbd_edit.Enabled := True;
         btn_add_cpjg.Enabled := false;
         btn_edit_cpjg.Enabled := True;
+        btn_pxjl_add.Enabled := false;
+        btn_pxjl_edit.Enabled := True;
       end;
     end;
    { else
@@ -1191,7 +1271,7 @@ begin
     cbb_xsbm.Items.Add(ibqry_bmxx.Fields[1].AsString);
     ibqry_bmxx.Next;
   end;
-    with ibqry_bmxx do begin
+  with ibqry_bmxx do begin
     Close;
     sql.Clear;
     sql.Add('select * from bmxx where bm_no like ' + quotedstr('__.__.__.__') + ' ORDER BY BM_NO');
@@ -1228,6 +1308,34 @@ begin
     cbb_gzjl_zwmc.Items.Add(ibqry_ry_zwxx.Fields[1].AsString);
     ibqry_ry_zwxx.Next;
   end;
+
+
+  with ibcqry_pxjl_jbxx do begin
+    close;
+    sql.Clear;
+    sql.Add('select * from jbxx');
+    Open;
+  end;
+   cbb_jb.Clear;
+    while not ibcqry_pxjl_jbxx.Eof do
+  begin
+    cbb_jb.Items.Add(ibcqry_pxjl_jbxx.Fields[1].AsString);
+    ibcqry_pxjl_jbxx.Next;
+  end;
+
+    with ibcqry_pxjl_pxlb do begin
+    close;
+    sql.Clear;
+    sql.Add('select * from PXLB');
+    Open;
+  end;
+     cbb_pxlb.Clear;
+    while not ibcqry_pxjl_pxlb.Eof do
+  begin
+    cbb_pxlb.Items.Add(ibcqry_pxjl_pxlb.Fields[1].AsString);
+    ibcqry_pxjl_pxlb.Next;
+  end;
+
   lbl_yggl.Caption := '员工工龄：0年';
   lbl_now_gz.Caption := '目前薪资：￥0元';
  // ShowMessage(lbl_is_edit.Caption);
@@ -1247,7 +1355,7 @@ begin
     if self.components[i] is TMemo then
       TMemo(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
 
   refsh_data;
@@ -1419,7 +1527,7 @@ begin
     Open;
   end;
   lbl_xsbm_no.Caption := ibqry_bmxx.Fields[0].AsString;
-  lbl_rybm.Caption := ibqry_bmxx.Fields[0].AsString; 
+  lbl_rybm.Caption := ibqry_bmxx.Fields[0].AsString;
 end;
 
 procedure TFrm_Addryzl.ds_jyjlDataChange(Sender: TObject; Field: TField);
@@ -1572,7 +1680,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -1616,7 +1724,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -1659,7 +1767,7 @@ begin
     if self.components[i] is TMemo then
       TMemo(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
 end;
 
@@ -1728,8 +1836,7 @@ begin
       if Self.Components[i] is TDBGrid then
         TDBGrid(self.Components[i]).Enabled := true;
     end;
-   // MainForm.IBTransaction1.Active := False;
-   // MainForm.IBTransaction1.StartTransaction;
+
   end;
 end;
 
@@ -1768,7 +1875,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -1814,7 +1921,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -1855,7 +1962,7 @@ begin
     if self.components[i] is TMemo then
       TMemo(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
 end;
 
@@ -1889,8 +1996,6 @@ begin
     end;
     edt_xzbd_bdhje.Clear;
     mmo_xzbd_bz.Clear;
-   // MainForm.IBTransaction1.Active := False;
-   // MainForm.IBTransaction1.StartTransaction;
   end;
 end;
 
@@ -1923,8 +2028,7 @@ begin
       if Self.Components[i] is TDBGrid then
         TDBGrid(self.Components[i]).Enabled := true;
     end;
-   // MainForm.IBTransaction1.Active := False;
-   // MainForm.IBTransaction1.StartTransaction;
+
   end;
 end;
 
@@ -1961,7 +2065,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
 
         end;
         refsh_data;
@@ -2005,7 +2109,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
 
         end;
         refsh_data;
@@ -2027,13 +2131,13 @@ var i: Integer;
 begin
   if is_edit5 = 0 then begin
     btn_xzbd_add.Enabled := True;
-    btn_xzbd_edit.Enabled := True;
+    btn_xzbd_edit.Enabled := False;
     btn_xzbd_save.Enabled := False;
     btn_xzbd_cancel.Enabled := False;
   end
   else
   begin
-    btn_xzbd_add.Enabled := True;
+    btn_xzbd_add.Enabled := False;
     btn_xzbd_edit.Enabled := True;
     btn_xzbd_save.Enabled := False;
     btn_xzbd_cancel.Enabled := False;
@@ -2049,7 +2153,7 @@ begin
     if self.components[i] is TMemo then
       TMemo(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
   refsh_data;
 end;
@@ -2156,7 +2260,7 @@ begin
     if self.components[i] is TMemo then
       TMemo(self.components[i]).Enabled := false;
     if Self.Components[i] is TDBGrid then
-      TDBGrid(self.Components[i]).Enabled := false;
+      TDBGrid(self.Components[i]).Enabled := true;
   end;
 end;
 
@@ -2194,7 +2298,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -2236,7 +2340,7 @@ begin
           if self.components[i] is TMemo then
             TMemo(self.components[i]).Enabled := false;
           if Self.Components[i] is TDBGrid then
-            TDBGrid(self.Components[i]).Enabled := false;
+            TDBGrid(self.Components[i]).Enabled := true;
         end;
         refsh_data;
       except
@@ -2328,6 +2432,7 @@ begin
     Frm_Addryzl.lbl_ygno2.Caption := Frm_Addryzl.edt_ygno.Text;
     Frm_Addryzl.lbl_ygno0.Caption := Frm_Addryzl.edt_ygno.Text;
     lbl_ygno3.Caption := edt_ygno.Text;
+    lbl_ygno_pxjl.Caption :=edt_ygno.Text;
     Frm_Addryzl.edt_ygname.Text := ibcqry_ryxx.fieldbyname('RY_NAME').AsString;
     if ibcqry_ryxx.fieldbyname('RY_SEX').AsString = '男' then
       Frm_Addryzl.cbb_ybxb.itemindex := 0;
@@ -2450,11 +2555,11 @@ begin
           sql.Text := 'select bmmc from bmxx where bm_no=' + quotedstr(ry_bm);
           open;
           cbb_xsbm.ItemIndex := cbb_xsbm.Items.IndexOf(ibcqry_ryxx.Fields[0].AsString);
-          cbb_xsbm1.ItemIndex :=-1;
+          cbb_xsbm1.ItemIndex := -1;
         end;
         Frm_Addryzl.lbl_rybm.Caption := RY_BM;
       end;
-       if Length(ry_bm) = 11 then begin //四级部门
+      if Length(ry_bm) = 11 then begin //四级部门
         with ibcqry_ryxx do begin
           Close;
           SQL.Text := 'select bmmc from bmxx where bm_no=' + quotedstr(LeftStr(ry_bm, 2));
@@ -2551,7 +2656,7 @@ begin
     end;
 
 
-    with ibcqry_ryxx do begin  //取薪资
+    with ibcqry_ryxx do begin //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
         + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
@@ -2564,8 +2669,8 @@ begin
     begin
       Frm_Addryzl.lbl_now_gz.Caption := '目前薪资：￥' + ibcqry_ryxx.Fields[1].AsString + '元';
     end;
-   with ibcqry_ryxx do begin
-     close;
+    with ibcqry_ryxx do begin
+      close;
       sql.Text := 'select ry_no, ry_cpjg from ryxx_cpjg'
         + ' where ry_no=' + quotedstr(edt_ygno.text);
       Open;
@@ -2573,23 +2678,23 @@ begin
     if ibcqry_ryxx.IsEmpty then begin
       Memo1.Text := '无';
       //ShowMessage(lbl_is_edit.Caption);
-      btn_edit_cpjg.Enabled :=False;
-      if lbl_is_edit.Caption ='0'then
+      btn_edit_cpjg.Enabled := False;
+      if lbl_is_edit.Caption = '0' then
       begin
-      btn_add_cpjg.Enabled :=true;
+        btn_add_cpjg.Enabled := true;
       end
       else
       begin
-      btn_add_cpjg.Enabled :=false;
+        btn_add_cpjg.Enabled := false;
       end;
     end
     else
     begin
       Memo1.Text := ibcqry_ryxx.Fields[1].AsString;
-      if lbl_is_edit.Caption ='0' then
-      btn_add_cpjg.Enabled :=false
+      if lbl_is_edit.Caption = '0' then
+        btn_add_cpjg.Enabled := false
       else
-       btn_edit_cpjg.Enabled :=true;
+        btn_edit_cpjg.Enabled := true;
     end;
     refsh_data;
   end
@@ -2628,6 +2733,7 @@ begin
     Frm_Addryzl.lbl_ygno2.Caption := Frm_Addryzl.edt_ygno.Text;
     Frm_Addryzl.lbl_ygno0.Caption := Frm_Addryzl.edt_ygno.Text;
     lbl_ygno3.Caption := edt_ygno.Text;
+    lbl_ygno_pxjl.Caption :=edt_ygno.Text;
     Frm_Addryzl.edt_ygname.Text := ibcqry_ryxx.fieldbyname('RY_NAME').AsString;
     if ibcqry_ryxx.fieldbyname('RY_SEX').AsString = '男' then
       Frm_Addryzl.cbb_ybxb.itemindex := 0;
@@ -2719,7 +2825,7 @@ begin
         cbb_dw.ItemIndex := cbb_dw.Items.IndexOf(ibcqry_ryxx.Fields[0].AsString);
         cbb_bm.ItemIndex := -1;
         cbb_xsbm.ItemIndex := -1;
-        cbb_xsbm1.ItemIndex :=-1;
+        cbb_xsbm1.ItemIndex := -1;
         Frm_Addryzl.lbl_rybm.Caption := RY_BM;
       end;
       if Length(ry_bm) = 5 then begin //二级部门
@@ -2750,11 +2856,11 @@ begin
           sql.Text := 'select bmmc from bmxx where bm_no=' + quotedstr(ry_bm);
           open;
           cbb_xsbm.ItemIndex := cbb_xsbm.Items.IndexOf(ibcqry_ryxx.Fields[0].AsString);
-          cbb_xsbm1.ItemIndex :=-1;
+          cbb_xsbm1.ItemIndex := -1;
         end;
         Frm_Addryzl.lbl_rybm.Caption := RY_BM;
       end;
-       if Length(ry_bm) = 11 then begin //四级部门
+      if Length(ry_bm) = 11 then begin //四级部门
         with ibcqry_ryxx do begin
           Close;
           SQL.Text := 'select bmmc from bmxx where bm_no=' + quotedstr(LeftStr(ry_bm, 2));
@@ -2849,7 +2955,7 @@ begin
       Frm_Addryzl.lbl_zw.Caption := ibcqry_ryxx.Fields[1].AsString;
     end;
 
-    with ibcqry_ryxx do begin      //取薪资
+    with ibcqry_ryxx do begin //取薪资
       close;
       sql.Text := 'select ry_no, xzbd_bdhje from ryxx_xzbdjl'
         + ' where xzbd_bdrq=(select max(xzbd_bdrq) from ryxx_xzbdjl where ry_no=' + quotedstr(Frm_Addryzl.edt_ygno.text) + ') and ry_no=' + quotedstr(edt_ygno.text);
@@ -2863,7 +2969,7 @@ begin
       Frm_Addryzl.lbl_now_gz.Caption := '目前薪资：￥' + ibcqry_ryxx.Fields[1].AsString + '元';
     end;
     with ibcqry_ryxx do begin
-     close;
+      close;
       sql.Text := 'select ry_no, ry_cpjg from ryxx_cpjg'
         + ' where ry_no=' + quotedstr(edt_ygno.text);
       Open;
@@ -2871,23 +2977,23 @@ begin
     if ibcqry_ryxx.IsEmpty then begin
       Memo1.Text := '无';
       //ShowMessage(lbl_is_edit.Caption);
-      btn_edit_cpjg.Enabled :=False;
-      if lbl_is_edit.Caption ='0'then
+      btn_edit_cpjg.Enabled := False;
+      if lbl_is_edit.Caption = '0' then
       begin
-      btn_add_cpjg.Enabled :=true;
+        btn_add_cpjg.Enabled := true;
       end
       else
       begin
-      btn_add_cpjg.Enabled :=false;
+        btn_add_cpjg.Enabled := false;
       end;
     end
     else
     begin
       Memo1.Text := ibcqry_ryxx.Fields[1].AsString;
-      if lbl_is_edit.Caption ='0' then
-      btn_add_cpjg.Enabled :=false
+      if lbl_is_edit.Caption = '0' then
+        btn_add_cpjg.Enabled := false
       else
-       btn_edit_cpjg.Enabled :=true;
+        btn_edit_cpjg.Enabled := true;
     end;
     refsh_data;
   end
@@ -2928,6 +3034,11 @@ begin
   begin
     ShowMessage('请先保存当前页面！');
     PageControl1.ActivePage := TabSheet6;
+  end;
+  if btn_pxjl_save.Enabled = True then
+  begin
+    ShowMessage('请先保存当前页面！');
+    PageControl1.ActivePage := TabSheet7;
   end;
 
   refsh_data;
@@ -3028,12 +3139,12 @@ end;
 
 procedure TFrm_Addryzl.dtp_htqdrqChange(Sender: TObject);
 begin
-dtp_htdqrq.Date := IncMonth(dtp_rzrq.Date, 12);
+  dtp_htdqrq.Date := IncMonth(dtp_rzrq.Date, 12);
 end;
 
 procedure TFrm_Addryzl.cbb_xsbm1DropDown(Sender: TObject);
 begin
-lbl_xsbm_no.Caption := '0';
+  lbl_xsbm_no.Caption := '0';
   cbb_xsbm1.Items.Clear;
   with ibqry_bmxx do begin
     Close;
@@ -3071,13 +3182,290 @@ end;
 procedure TFrm_Addryzl.cbb_gzjl_zwmcKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-key:=0;
+  key := 0;
 end;
 
 procedure TFrm_Addryzl.cbb_gzjl_zwmcKeyPress(Sender: TObject;
   var Key: Char);
 begin
-key:=#0;
+  key := #0;
+end;
+
+procedure TFrm_Addryzl.btn_pxjl_addClick(Sender: TObject);
+var i: Integer;
+begin
+  is_edit7 := 0;
+  if lbl_ygno_pxjl.Caption = '0' then
+  begin
+    btn_ygno.Click; //员工编号，查询需要修改的人员
+  end
+  else
+  begin
+    btn_pxjl_add.Enabled := False;
+    btn_pxjl_edit.Enabled := False;
+    btn_pxjl_save.Enabled := true;
+   btn_pxjl_cancel.Enabled := true;
+
+    for i := 0 to self.componentcount - 1 do begin
+      if self.components[i] is Tedit then
+      begin
+        Tedit(self.components[i]).Color := clWindow;
+        Tedit(self.components[i]).Enabled := true;
+      end;
+      if self.components[i] is TComboBox then
+        TComboBox(self.components[i]).Enabled := true;
+      if self.components[i] is tdatetimepicker then
+        tdatetimepicker(self.components[i]).Enabled := true;
+      if self.components[i] is TMemo then
+        TMemo(self.components[i]).Enabled := true;
+    end;
+    edt_pxjl_sssc.Clear;
+    edt_pxjl_pxsc.Clear;
+    edt_pxjl_pxkc.clear;
+    edt_pxjl_wxjgmc.Clear;
+    edt_pxjl_pxhdzs.Clear;
+    //edt_pxjl_
+  end;
+end;
+
+procedure TFrm_Addryzl.btn_pxjl_cancelClick(Sender: TObject);
+var i: Integer;
+begin
+  if is_edit7 = 0 then begin
+    btn_pxjl_add.Enabled := true;
+    btn_pxjl_edit.Enabled := False;
+    btn_pxjl_save.Enabled := False;
+   btn_pxjl_cancel.Enabled := False;
+  end
+  else
+  begin
+    btn_pxjl_add.Enabled := False;
+    btn_pxjl_edit.Enabled := true;
+    btn_pxjl_save.Enabled := False;
+   btn_pxjl_cancel.Enabled := False;
+  end;
+  //相同组件统一设置
+  for i := 0 to self.componentcount - 1 do begin
+    if self.components[i] is Tedit then
+      Tedit(self.components[i]).Enabled := false;
+    if self.components[i] is TComboBox then
+      TComboBox(self.components[i]).Enabled := false;
+    if self.components[i] is tdatetimepicker then
+      tdatetimepicker(self.components[i]).Enabled := false;
+    if self.components[i] is TMemo then
+      TMemo(self.components[i]).Enabled := false;
+    if Self.Components[i] is TDBGrid then
+      TDBGrid(self.Components[i]).Enabled := true;
+  end;
+  refsh_data;
+end;
+
+procedure TFrm_Addryzl.btn_pxjl_editClick(Sender: TObject);
+var i: Integer;
+begin
+  is_edit7 := 1;
+      btn_pxjl_add.Enabled := False;
+     btn_pxjl_edit.Enabled := False;
+     btn_pxjl_save.Enabled := true;
+     btn_pxjl_cancel.Enabled := true;
+    for i := 0 to self.componentcount - 1 do begin
+      if self.components[i] is Tedit then
+      begin
+        Tedit(self.components[i]).Color := clWindow;
+        Tedit(self.components[i]).Enabled := true;
+      end;
+      if self.components[i] is TComboBox then
+        TComboBox(self.components[i]).Enabled := true;
+      if self.components[i] is tdatetimepicker then
+        tdatetimepicker(self.components[i]).Enabled := true;
+      if self.components[i] is TMemo then
+        TMemo(self.components[i]).Enabled := true;
+      if Self.Components[i] is TDBGrid then
+        TDBGrid(self.Components[i]).Enabled := true;
+    end;
+
+end;
+
+procedure TFrm_Addryzl.ds_pxjlDataChange(Sender: TObject; Field: TField);
+begin
+  dtp_pxrq.Date := ibctbl_pxjlPXRQ.AsDateTime;
+
+  edt_pxjl_sssc.Text :=ibctbl_pxjlSXSC.AsString;
+  edt_pxjl_pxsc.Text := ibctbl_pxjlPXSC.AsString;
+  edt_pxjl_pxkc.Text := ibctbl_pxjlPXKC.AsString;
+  edt_pxjl_wxjgmc.Text :=  ibctbl_pxjlWXJG.AsString;
+  edt_pxjl_pxhdzs.Text := ibctbl_pxjlPXHDZS.AsString;
+  mmo_pxjl_bz.Text :=ibctbl_pxjlBZ.AsString;
+  if ibctbl_pxjlNXBJ.AsString ='内训' then begin
+    chk_nxbj.Checked:=true;
+  end
+  else
+   begin
+     chk_nxbj.Checked :=False;
+   end;
+   cbb_jb.Text :=ibctbl_pxjlJBNAME.AsString;
+   cbb_pxlb.Text :=ibctbl_pxjlPXLBNAME.AsString;
+
+ { if ibtbl_gzjlGZJL_ID.AsString <> '' then begin
+    with ibqry_ry_zwxx do begin
+      sql.Clear;
+      sql.Add('select GZ_ZWMC from RYXX_GZJL'
+        + ' where ry_no=' + quotedstr(lbl_ygno1.Caption));
+      Open;
+      cbb_gzjl_zwmc.Text := ibqry_ry_zwxx.Fields[0].AsString;
+    end;
+  end;
+  mmo_gzjl_bz.Text := ibtbl_gzjlGZ_BZ.AsString;  }
+end;
+
+procedure TFrm_Addryzl.btn_pxjl_saveClick(Sender: TObject);
+var i: Integer;
+begin
+  if is_edit7 = 0 then
+  begin
+    //新增
+    with ibqry_insert do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('insert into RYXX_PXJL (RY_NO,JBNAME,PXRQ,SXSC,PXSC,PXKC,PXLBNAME,NXBJ,WXJG,PXHDZS,BZ)'
+        + ' values (:RY_NO,:JBNAME,:PXRQ,:SXSC,:PXSC,:PXKC,:PXLBNAME,:NXBJ,:WXJG,:PXHDZS,:BZ)');
+      ParamByName('RY_NO').AsString := lbl_ygno_pxjl.Caption;
+      ParamByName('JBNAME').AsString := cbb_jb.Text;
+      ParamByName('PXRQ').asdate := dtp_pxrq.Date;
+      ParamByName('SXSC').AsString := edt_pxjl_sssc.Text;
+      ParamByName('PXSC').AsString := edt_pxjl_pxsc.Text;
+      ParamByName('PXKC').AsString := edt_pxjl_pxkc.Text;
+      ParamByName('PXLBNAME').AsString := cbb_pxlb.Text;
+      if chk_nxbj.Checked then
+       ParamByName('NXBJ').AsString :='内训'
+       else
+       ParamByName('NXBJ').AsString :='外训';
+        ParamByName('WXJG').AsString := edt_pxjl_wxjgmc.Text;
+         ParamByName('PXHDZS').AsString := edt_pxjl_pxhdzs.Text;
+        ParamByName('BZ').AsString := mmo_pxjl_bz.Text;
+
+      try
+        ExecSQL;
+        ShowMessage('保存成功！');
+        btn_pxjl_add.Enabled := True;
+        btn_pxjl_edit.Enabled := False;
+        btn_pxjl_save.Enabled := False;
+        btn_pxjl_cancel.Enabled := False;
+  //相同组件统一设置
+        for i := 0 to self.componentcount - 1 do begin
+          if self.components[i] is Tedit then
+            Tedit(self.components[i]).Enabled := false;
+          if self.components[i] is TComboBox then
+            TComboBox(self.components[i]).Enabled := false;
+          if self.components[i] is tdatetimepicker then
+            tdatetimepicker(self.components[i]).Enabled := false;
+          if self.components[i] is TMemo then
+            TMemo(self.components[i]).Enabled := false;
+          if Self.Components[i] is TDBGrid then
+            TDBGrid(self.Components[i]).Enabled := true;
+        end;
+        refsh_data;
+      except
+        ShowMessage('保存失败！');
+        Application.MessageBox('人员不能在同一天参加相同课程！', 
+          '人员培训经历', MB_OK + MB_ICONINFORMATION);
+          
+        btn_pxjl_add.Enabled := False;
+        btn_pxjl_edit.Enabled := False;
+        btn_pxjl_save.Enabled := True;
+        btn_pxjl_cancel.Enabled := True;
+      end;
+    end;
+
+  end
+  else
+  begin
+      //修改
+    with ibqry_insert do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('update RYXX_PXJL set RY_NO=:RY_NO,JBNAME=:JBNAME,PXRQ=:PXRQ,SXSC=:SXSC,'
+        + 'PXSC=:PXSC,PXKC=:PXKC,PXLBNAME=:PXLBNAME,NXBJ=:NXBJ,WXJG=:WXJG,PXHDZS=:PXHDZS,BZ=:BZ where PXJL_ID=' + quotedstr(ibctbl_pxjlPXJL_ID.AsString));
+
+     ParamByName('RY_NO').AsString := lbl_ygno_pxjl.Caption;
+      ParamByName('JBNAME').AsString := cbb_jb.Text;
+      ParamByName('PXRQ').asdate := dtp_pxrq.Date;
+      ParamByName('SXSC').AsString := edt_pxjl_sssc.Text;
+      ParamByName('PXSC').AsString := edt_pxjl_pxsc.Text;
+      ParamByName('PXKC').AsString := edt_pxjl_pxkc.Text;
+      ParamByName('PXLBNAME').AsString := cbb_pxlb.Text;
+      if chk_nxbj.Checked then
+       ParamByName('NXBJ').AsString :='内训'
+       else
+       ParamByName('NXBJ').AsString :='外训';
+        ParamByName('WXJG').AsString := edt_pxjl_wxjgmc.Text;
+         ParamByName('PXHDZS').AsString := edt_pxjl_pxhdzs.Text;
+        ParamByName('BZ').AsString := mmo_pxjl_bz.Text;
+      try
+        ExecSQL;
+        ShowMessage('保存成功！');
+        btn_pxjl_add.Enabled := False;
+        btn_pxjl_edit.Enabled := True;
+        btn_pxjl_save.Enabled := False;
+        btn_pxjl_cancel.Enabled := False;
+  //相同组件统一设置
+        for i := 0 to self.componentcount - 1 do begin
+          if self.components[i] is Tedit then
+            Tedit(self.components[i]).Enabled := false;
+          if self.components[i] is TComboBox then
+            TComboBox(self.components[i]).Enabled := false;
+          if self.components[i] is tdatetimepicker then
+            tdatetimepicker(self.components[i]).Enabled := false;
+          if self.components[i] is TMemo then
+            TMemo(self.components[i]).Enabled := false;
+          if Self.Components[i] is TDBGrid then
+            TDBGrid(self.Components[i]).Enabled := true;
+        end;
+        refsh_data;
+      except
+        ShowMessage('保存失败！');
+         Application.MessageBox('人员不能在同一天参加相同课程！', 
+          '人员培训经历', MB_OK + MB_ICONINFORMATION);
+        btn_pxjl_add.Enabled := False;
+        btn_pxjl_edit.Enabled := False;
+        btn_pxjl_save.Enabled := True;
+        btn_pxjl_cancel.Enabled := True;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrm_Addryzl.cbb_jbKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+key := 0;
+end;
+
+procedure TFrm_Addryzl.cbb_jbKeyPress(Sender: TObject; var Key: Char);
+begin
+key := #0;
+end;
+
+procedure TFrm_Addryzl.cbb_pxlbKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+key := 0;
+end;
+
+procedure TFrm_Addryzl.cbb_pxlbKeyPress(Sender: TObject; var Key: Char);
+begin
+key := #0;
+end;
+
+procedure TFrm_Addryzl.cbb_jy_xlKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+key := 0;
+end;
+
+procedure TFrm_Addryzl.cbb_jy_xlKeyPress(Sender: TObject; var Key: Char);
+begin
+key := #0;
 end;
 
 end.
